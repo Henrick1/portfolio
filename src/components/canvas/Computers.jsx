@@ -4,8 +4,11 @@ import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 import CanvasLoader from "../Loader";
 
+// Optimised GLB (meshopt geometry + WebP textures): 1.5 MB instead of 16 MB
+const MODEL = `${import.meta.env.BASE_URL}desktop_pc/scene.glb`;
+
 const Computers = ({ isMobile }) => {
-  const computer = useGLTF("./desktop_pc/scene.gltf");
+  const computer = useGLTF(MODEL);
 
   return (
     <mesh>
@@ -50,7 +53,7 @@ const ComputersCanvas = () => {
     <Canvas
       frameloop='demand'
       shadows
-      dpr={[1, 2]}
+      dpr={[1, 1.75]}
       camera={{ position: [20, 3, 5], fov: 25 }}
       gl={{ preserveDrawingBuffer: true }}
     >
