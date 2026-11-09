@@ -1,25 +1,27 @@
-import { BrowserRouter } from "react-router-dom";
-
-import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas } from "./components";
+import { About, Contact, Hero, Navbar, Tech, Works, StarsCanvas } from "./components";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <div className='relative z-0 bg-primary'>
-        <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center'>
-          <Navbar />
-          <Hero />
-        </div>
+    <div className="relative z-0 bg-primary">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:bg-copper focus:text-primary focus:px-4 focus:py-2 focus:rounded"
+      >
+        Skip to content
+      </a>
+      <Navbar />
+      <main id="main">
+        <Hero />
         <About />
         <Tech />
         <Works />
-        <div className='relative z-0'>
+        <div className="relative z-0">
           <Contact />
           <StarsCanvas />
         </div>
-      </div>
-    </BrowserRouter>
+      </main>
+    </div>
   );
-}
+};
 
 export default App;

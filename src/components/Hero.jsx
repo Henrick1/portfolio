@@ -1,49 +1,54 @@
-import { motion } from 'framer-motion';
-
-import { styles } from '../styles';
-import { ComputersCanvas } from './canvas';
+import { styles } from "../styles";
+import { github } from "../assets";
+import Schematic from "./Schematic";
 
 const Hero = () => {
   return (
-    <section className='relative w-full h-screen mx-auto'>
+    <section className="relative w-full min-h-[100svh] overflow-hidden">
+      {/* background: perfboard grid, faded towards the edges */}
+      <div aria-hidden="true" className="absolute inset-0 perfboard perfboard-fade" />
+
       <div
-        className={`absolute inset-0 top-[120px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
+        className={`relative max-w-7xl mx-auto ${styles.paddingX} pt-32 pb-16 min-h-[100svh] grid lg:grid-cols-[1.05fr_1fr] gap-12 items-center`}
       >
-        <div className='flex flex-col justify-center items-center mt-5'>
-          <div className='w-5 h-5 rounded-full bg-[#915EFF]' />
-          <div className='w-1 sm:h-80 h-40 violet-gradient' />
+        <div>
+          <h1 className={styles.heroHeadText}>Henrique</h1>
+          <p className={`${styles.heroSubText} mt-6 max-w-[34ch]`}>
+            Computer Science student in Brazil. I write software that talks to hardware: Flask sites,
+            ESP32 sensors and Java games.
+          </p>
+
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <a
+              href="#work"
+              className="bg-copper text-primary font-bold px-6 py-3 rounded-lg hover:bg-[#EDB872] transition-colors"
+            >
+              See projects
+            </a>
+            <a
+              href="#contact"
+              className="border border-secondary/60 text-white font-semibold px-6 py-3 rounded-lg hover:border-white transition-colors"
+            >
+              Get in touch
+            </a>
+            <a
+              href="https://github.com/Henrick1"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 text-secondary hover:text-white transition-colors px-2 py-3"
+            >
+              <img src={github} alt="" width="20" height="20" className="w-5 h-5" />
+              GitHub
+            </a>
+          </div>
         </div>
 
-        <div>
-          <h1 className={`${styles.heroHeadText} text-white`}>
-            Hi, I'm <span className='text-[#915EFF]'>Henrique</span>
-          </h1>
-          <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            Currently studying Computer Science. <br className='sm:block hidden' />
-          Software Developer.
-          </p>
+        <div className="flex justify-center lg:justify-end">
+          <Schematic />
         </div>
-      </div>
-      <ComputersCanvas/>
-      <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
-        <a href='#about'>
-          <div className='w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2'>
-            <motion.div
-                animate={{
-                  y: [0, 24, 0],
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  repeatType: "loop",
-                }}
-                className='w-3 h-3 rounded-full bg-secondary mb-1'
-              />
-          </div>
-        </a>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

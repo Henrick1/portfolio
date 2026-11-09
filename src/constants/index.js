@@ -12,7 +12,6 @@ import {
     java,
     git,
     micropython,
-    tesla,
     iotpark,
     javaprjct,
     computerstore,
@@ -25,8 +24,12 @@ import {
       title: "About",
     },
     {
+      id: "tools",
+      title: "Tools",
+    },
+    {
       id: "work",
-      title: "Work",
+      title: "Projects",
     },
     {
       id: "contact",
@@ -59,11 +62,11 @@ import {
       icon: python,
     },
     {
-      name: "HTML 5",
+      name: "HTML5",
       icon: html,
     },
     {
-      name: "CSS 3",
+      name: "CSS3",
       icon: css,
     },
     {
@@ -72,7 +75,7 @@ import {
     },
     
     {
-      name: "Sql",
+      name: "SQL",
       icon: sql,
     },
     {
@@ -80,7 +83,7 @@ import {
       icon: java,
     },
     {
-      name: "Micro Python",
+      name: "MicroPython",
       icon: micropython,
     },
     {
@@ -88,60 +91,33 @@ import {
       icon: c,
     },
     {
-      name: "Three JS",
+      name: "Three.js",
       icon: threejs,
     },
     {
-      name: "git",
+      name: "Git",
       icon: git,
     },
     
-  ];
-  
-  const experiences = [
-    {
-      title: "Test title",
-      company_name: "Testla",
-      icon: tesla,
-      iconBg: "#E6DEDD",
-      date: " Test date Jan 2021 - Feb 2022",
-      points: [
-        "test1",
-        "test2",
-        "test3",
-        "test4",
-      ],
-    },
-  ];
-  
-  const testimonials = [
-    {
-      testimonial:
-        "testim",
-      name: "Sara Lee",
-      designation: "CFO",
-      company: "company",
-      image: "https://randomuser.me/api/portraits/women/4.jpg",
-    },
   ];
   
   const projects = [
     {
       name: "IoT parking",
       description:
-        "Project of parking slots and a complete site using flask with IoT sensors and db connection made both physically and virtually.",
+        "A parking-spot monitor: ESP32 sensors on a physical model report to a Flask site backed by a database.",
       tags: [
         {
-          name: "Web Flask",
-          color: "blue-text-gradient",
+          name: "Flask",
+          color: "tag-copper",
         },
         {
-          name: "Esp32",
-          color: "pink-text-gradient",
+          name: "ESP32",
+          color: "tag-muted",
         },
         {
           name: "Python",
-          color: "green-text-gradient",
+          color: "tag-led",
         },
       ],
       image: iotpark,
@@ -150,11 +126,11 @@ import {
     {
       name: "Puzzle game",
       description:
-        "A java based puzzle solving game project with a mystery history for a programming discipline that uses basic java and interactible interfaces with swing.",
+        "A puzzle game with a mystery story, built in Java with Swing interfaces for a programming course.",
       tags: [
         {
           name: "Java",
-          color: "blue-text-gradient",
+          color: "tag-copper",
         },
       ],
       image: javaprjct,
@@ -163,19 +139,19 @@ import {
     {
       name: "Computer store",
       description:
-        "A web site made for a discipline that has complete front-end interacting with back-end with a whole functional pages and products area.",
+        "An online store built for a course, with a working product catalogue and a PHP + SQL back-end.",
       tags: [
         {
-          name: "HTML & Css",
-          color: "blue-text-gradient",
+          name: "HTML & CSS",
+          color: "tag-copper",
         },
         {
           name: "JavaScript",
-          color: "green-text-gradient",
+          color: "tag-led",
         },
         {
           name: "SQL & PHP",
-          color: "pink-text-gradient",
+          color: "tag-muted",
         },
       ],
       image: computerstore,
@@ -183,4 +159,4 @@ import {
     },
   ];
   
-  export { services, technologies, experiences, testimonials, projects };
+  export { services, technologies, projects };
