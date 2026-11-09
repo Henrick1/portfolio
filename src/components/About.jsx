@@ -8,22 +8,17 @@ import { fadeIn, textVariant } from '../utils/motion';
 import { SectionWrapper } from '../hoc';
 
 const ServiceCard = ({ index, title, icon }) => (
-  <Tilt className='xs:w-[250px] w-full'>
+  <Tilt className='xs:w-[250px] w-full' options={{ max: 45, scale: 1, speed: 450 }}>
     <motion.div
       variants={fadeIn("right", "spring", index * 0.5, 0.75)}
       className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
     >
       <div
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
         className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
       >
         <img
           src={icon}
-          alt='web-development'
+          alt=''
           className='w-16 h-16 object-contain'
         />
 
@@ -46,11 +41,11 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
-        I'm a Brazilian software developer with experience in Python, HMTL, Css, JavaScript, Java, C, SQL
-         and And some experience in frameworks like three.js. I'm currently studying Computer Science,
-         and in the course we develop methodologies, languages and knowledge are presented, on such as frontend and backend,
-         assembly, creation of physical and virtual projects, discrete mathematics and cyber security.
-         I'm a quick learner and I have completed English courses and speak fluently, but I still have no work experience.
+        I'm a Brazilian software developer with experience in Python, HTML, CSS, JavaScript, Java, C and SQL,
+        and some experience with libraries like Three.js. I'm currently studying Computer Science, where I work
+        with front-end and back-end development, assembly, physical and virtual projects, discrete mathematics
+        and cyber security. I'm a quick learner, I speak English fluently, and I'm looking for my first
+        professional opportunity.
       </motion.p>
 
       <div className='mt-20 flex flex-wrap gap-12'>

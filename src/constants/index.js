@@ -12,7 +12,6 @@ import {
     java,
     git,
     micropython,
-    tesla,
     iotpark,
     javaprjct,
     computerstore,
@@ -72,7 +71,7 @@ import {
     },
     
     {
-      name: "Sql",
+      name: "SQL",
       icon: sql,
     },
     {
@@ -80,7 +79,7 @@ import {
       icon: java,
     },
     {
-      name: "Micro Python",
+      name: "MicroPython",
       icon: micropython,
     },
     {
@@ -88,55 +87,28 @@ import {
       icon: c,
     },
     {
-      name: "Three JS",
+      name: "Three.js",
       icon: threejs,
     },
     {
-      name: "git",
+      name: "Git",
       icon: git,
     },
     
-  ];
-  
-  const experiences = [
-    {
-      title: "Test title",
-      company_name: "Testla",
-      icon: tesla,
-      iconBg: "#E6DEDD",
-      date: " Test date Jan 2021 - Feb 2022",
-      points: [
-        "test1",
-        "test2",
-        "test3",
-        "test4",
-      ],
-    },
-  ];
-  
-  const testimonials = [
-    {
-      testimonial:
-        "testim",
-      name: "Sara Lee",
-      designation: "CFO",
-      company: "company",
-      image: "https://randomuser.me/api/portraits/women/4.jpg",
-    },
   ];
   
   const projects = [
     {
       name: "IoT parking",
       description:
-        "Project of parking slots and a complete site using flask with IoT sensors and db connection made both physically and virtually.",
+        "A parking-spot monitor: ESP32 sensors on a physical model send data to a Flask website backed by a database.",
       tags: [
         {
           name: "Web Flask",
           color: "blue-text-gradient",
         },
         {
-          name: "Esp32",
+          name: "ESP32",
           color: "pink-text-gradient",
         },
         {
@@ -150,7 +122,7 @@ import {
     {
       name: "Puzzle game",
       description:
-        "A java based puzzle solving game project with a mystery history for a programming discipline that uses basic java and interactible interfaces with swing.",
+        "A Java puzzle game with a mystery story, built for a programming course using Swing interfaces.",
       tags: [
         {
           name: "Java",
@@ -163,10 +135,10 @@ import {
     {
       name: "Computer store",
       description:
-        "A web site made for a discipline that has complete front-end interacting with back-end with a whole functional pages and products area.",
+        "An online store built for a course, with a complete front-end, a products area and a PHP + SQL back-end.",
       tags: [
         {
-          name: "HTML & Css",
+          name: "HTML & CSS",
           color: "blue-text-gradient",
         },
         {
@@ -183,4 +155,4 @@ import {
     },
   ];
   
-  export { services, technologies, experiences, testimonials, projects };
+  export { services, technologies, projects };

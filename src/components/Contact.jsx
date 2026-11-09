@@ -47,8 +47,8 @@ const Contact = () => {
       })
     }, (error) => {
       setLoading(false)
-      console.log(error);
-      alert('Something went wrong')
+      console.error(error);
+      alert('Your message could not be sent. Please try again or email me directly.')
     })
   }
 
@@ -71,10 +71,12 @@ const Contact = () => {
             <input 
               type="text"
               name="name"
+              required
+              autoComplete="name"
               value={form.name}
               onChange={handleChange}
               placeholder="Enter name"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outlined-none border-none font-medium"
+              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-transparent focus:border-[#915EFF] transition-colors font-medium"
             />
           </label>
           <label className="flex flex-col">
@@ -82,10 +84,12 @@ const Contact = () => {
             <input 
               type="email"
               name="email"
+              required
+              autoComplete="email"
               value={form.email}
               onChange={handleChange}
               placeholder="Enter email"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outlined-none border-none font-medium"
+              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-transparent focus:border-[#915EFF] transition-colors font-medium"
             />
           </label>
           <label className="flex flex-col">
@@ -93,15 +97,17 @@ const Contact = () => {
             <textarea
               rows="7" 
               name="message"
+              required
               value={form.message}
               onChange={handleChange}
               placeholder="Enter your message"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outlined-none border-none font-medium"
+              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-transparent focus:border-[#915EFF] transition-colors font-medium"
             />
           </label>
           <button
             type="submit"
-            className="bg-tertiary py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl"
+            disabled={loading}
+            className="bg-[#915EFF] hover:bg-[#7f45ff] disabled:opacity-60 transition-colors py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl"
           >
             {loading ? 'Sending...' : 'Send'}
           </button>
