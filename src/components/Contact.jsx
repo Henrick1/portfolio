@@ -76,7 +76,7 @@ const Contact = () => {
               value={form.name}
               onChange={handleChange}
               placeholder="Enter name"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-transparent focus:border-[#915EFF] transition-colors font-medium"
+              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-transparent focus:border-[#3B82F6] transition-colors font-medium"
             />
           </label>
           <label className="flex flex-col">
@@ -89,7 +89,7 @@ const Contact = () => {
               value={form.email}
               onChange={handleChange}
               placeholder="Enter email"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-transparent focus:border-[#915EFF] transition-colors font-medium"
+              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-transparent focus:border-[#3B82F6] transition-colors font-medium"
             />
           </label>
           <label className="flex flex-col">
@@ -101,13 +101,13 @@ const Contact = () => {
               value={form.message}
               onChange={handleChange}
               placeholder="Enter your message"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-transparent focus:border-[#915EFF] transition-colors font-medium"
+              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-transparent focus:border-[#3B82F6] transition-colors font-medium"
             />
           </label>
           <button
             type="submit"
             disabled={loading}
-            className="bg-[#915EFF] hover:bg-[#7f45ff] disabled:opacity-60 transition-colors py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl"
+            className="bg-[#3B82F6] hover:bg-[#2563EB] disabled:opacity-60 transition-colors py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl"
           >
             {loading ? 'Sending...' : 'Send'}
           </button>

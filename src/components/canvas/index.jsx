@@ -3,7 +3,7 @@ import useInView from "../../hooks/useInView";
 import SceneBoundary from "./SceneBoundary";
 
 // three.js is split out of the main bundle so the page text paints first.
-const Computers = lazy(() => import("./Computers"));
+const Orb = lazy(() => import("./Orb"));
 const Earth = lazy(() => import("./Earth"));
 const Ball = lazy(() => import("./Ball"));
 const Stars = lazy(() => import("./Stars"));
@@ -25,10 +25,10 @@ const deferred = (Scene, className) =>
     );
   };
 
-const ComputersCanvas = () => (
+const HeroCanvas = () => (
   <SceneBoundary>
     <Suspense fallback={null}>
-      <Computers />
+      <Orb />
     </Suspense>
   </SceneBoundary>
 );
@@ -37,4 +37,4 @@ const EarthCanvas = deferred(Earth, "w-full h-full");
 const BallCanvas = deferred(Ball, "w-full h-full");
 const StarsCanvas = deferred(Stars, "w-full h-auto absolute inset-0 z-[-1]");
 
-export { EarthCanvas, BallCanvas, ComputersCanvas, StarsCanvas };
+export { EarthCanvas, BallCanvas, HeroCanvas, StarsCanvas };

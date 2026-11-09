@@ -18,7 +18,7 @@ const Stars = (props) => {
     <group rotation={[0,0,Math.PI / 4]}>
       <Points ref={ref} positions={sphere} stride={3} frustumCulled {...props}>
         <PointMaterial transparent
-          color="#f272c8"
+          color="#60A5FA"
           size={0.002}
           sizeAttenuation={true}
           depthWrite={false}
