@@ -50,8 +50,8 @@ const About = () => {
         to the web page. I've connected ESP32 sensors to a Flask website over MQTT, written a detective game
         in Java with Swing and built an online store with PHP and SQL. I work mainly with Python, Java, C,
         JavaScript and SQL, and I used Three.js for the 3D in this portfolio. At university I study front-end
-        and back-end development, assembly, discrete mathematics and cyber security. I also work as a computer
-        technician, I speak English fluently, and I'm looking for my first internship or junior developer role.
+        and back-end development, assembly, discrete mathematics and cyber security. I also have computer
+        technician skills, I speak English fluently, and I'm looking for my first internship or junior developer role.
       </motion.p>
 
       <div className='mt-20 flex flex-wrap gap-12'>
