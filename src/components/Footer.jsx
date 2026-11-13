@@ -7,7 +7,7 @@ const Footer = () => (
       <div className="flex items-center gap-3">
         <img src={logo} alt="" className="w-8 h-8 object-contain" />
         <p className="text-secondary text-[14px]">
-          © {new Date().getFullYear()} Henrique · Computer Scientist & Software Developer
+          © {new Date().getFullYear()} Henrique · Full Stack Developer
         </p>
       </div>
       <div className="flex items-center gap-6 text-[14px]">

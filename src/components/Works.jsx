@@ -78,8 +78,8 @@ const Works = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
-        Academic and personal projects covering web development, IoT and object-oriented programming.
-        Each one links to its source code on GitHub.
+        Web applications from front-end to back-end, plus a few projects in IoT and object-oriented
+        programming. Each one links to its source code on GitHub.
       </motion.p>
 
       <div className='mt-14 flex flex-col gap-10'>
