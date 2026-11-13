@@ -31,7 +31,7 @@ const Footer = () => (
             <img src={logo} alt="" className="w-8 h-8 object-contain" />
           </span>
           <div>
-            <p className="font-mono text-white text-[14px]">made with coffee &amp; three.js by henrick</p>
+            <p className="font-mono text-white text-[14px]">made with react &amp; three.js by henrick</p>
             <p className="font-mono text-white/70 text-[12px]">probably playing something rn</p>
           </div>
         </div>
