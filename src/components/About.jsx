@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef, useMemo, useRef } from 'react';
 import { Tilt } from "react-tilt";
 import { motion } from 'framer-motion';
 
@@ -6,15 +6,17 @@ import { styles } from '../styles';
 import { services, profile } from '../constants';
 import { fadeIn, textVariant } from '../utils/motion';
 import { SectionWrapper } from '../hoc';
+import { ServiceIconsCanvas } from './canvas';
+import useOnScreen from '../hooks/useOnScreen';
 
-const ServiceCard = ({ index, title, description, icon }) => (
+const ServiceCard = ({ index, title, description, track }) => (
   <Tilt className='w-full h-full' options={{ max: 25, scale: 1, speed: 450 }}>
     <motion.div
       variants={fadeIn("right", "spring", index * 0.3, 0.75)}
       className='w-full h-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
     >
       <div className='bg-tertiary rounded-[20px] h-full py-8 px-6 min-h-[240px] flex justify-evenly items-center flex-col gap-4'>
-        <img src={icon} alt='' className='w-14 h-14 object-contain' />
+        <div ref={track} className='w-20 h-20' aria-hidden='true' />
         <div className='text-center'>
           <h3 className='text-white text-[19px] font-bold'>{title}</h3>
           <p className='mt-2 text-secondary text-[14px] leading-[20px]'>{description}</p>
@@ -56,6 +58,11 @@ const ProfileCard = () => (
 );
 
 const About = () => {
+  const cardsRef = useRef(null);
+  const onScreen = useOnScreen(cardsRef);
+  // One tracked slot per card; the shared canvas draws a 3D icon inside each.
+  const cards = useMemo(() => services.map((s) => ({ ...s, track: createRef() })), []);
+
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -84,11 +91,13 @@ const About = () => {
         <ProfileCard />
       </div>
 
-      <div className='mt-16 grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-6'>
-        {services.map((service, index) => (
+      <div ref={cardsRef} className='mt-16 grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-6'>
+        {cards.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}
       </div>
+
+      <ServiceIconsCanvas items={cards} active={onScreen} />
     </>
   )
 }

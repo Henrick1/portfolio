@@ -1,8 +1,4 @@
 import {
-    mobile,
-    backend,
-    creator,
-    web,
     javascript,
     python,
     html,
@@ -43,22 +39,22 @@ import {
     {
       title: "Front-end",
       description: "pixel-pushing with React, Next.js, TypeScript & Tailwind",
-      icon: web,
+      shape: "gem",
     },
     {
       title: "Back-end & APIs",
       description: "Node.js + Express APIs that (usually) don't break",
-      icon: backend,
+      shape: "geo",
     },
     {
       title: "Cloud & DevOps",
       description: "Google Cloud, Firebase & Docker: works on my machine AND yours",
-      icon: mobile,
+      shape: "cubes",
     },
     {
       title: "IoT & Hardware",
       description: "ESP32, MicroPython and a screwdriver",
-      icon: creator,
+      shape: "hexes",
     },
   ];
   

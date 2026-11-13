@@ -1,23 +1,12 @@
-import React, { createRef, useEffect, useMemo, useRef, useState } from "react";
+import React, { createRef, useMemo, useRef } from "react";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { techGroups } from "../constants";
 import { SkillBallsCanvas } from "./canvas";
+import useOnScreen from "../hooks/useOnScreen";
 import { fadeIn, textVariant } from "../utils/motion";
-
-// True while the element is on (or near) the screen.
-const useOnScreen = (ref) => {
-  const [on, setOn] = useState(false);
-  useEffect(() => {
-    if (!ref.current || !("IntersectionObserver" in window)) return setOn(true);
-    const io = new IntersectionObserver(([e]) => setOn(e.isIntersecting), { rootMargin: "200px" });
-    io.observe(ref.current);
-    return () => io.disconnect();
-  }, [ref]);
-  return on;
-};
 
 const Tech = () => {
   const section = useRef(null);

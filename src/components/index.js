@@ -1,4 +1,4 @@
-import { EarthCanvas, HeroCanvas, StarsCanvas, SkillBallsCanvas } from './canvas';
+import { EarthCanvas, HeroCanvas, StarsCanvas, SkillBallsCanvas, ServiceIconsCanvas } from './canvas';
 import Hero from './Hero';
 import HeroGrid from './HeroGrid';
 import Navbar from './Navbar';
@@ -20,5 +20,6 @@ export {
   EarthCanvas,
   HeroCanvas,
   StarsCanvas,
-  SkillBallsCanvas
+  SkillBallsCanvas,
+  ServiceIconsCanvas
 }
