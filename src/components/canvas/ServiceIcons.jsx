@@ -84,48 +84,42 @@ const Petals = () => {
   );
 };
 
-// Cloud & DevOps: three long bars crossing, with a glassy cube in the middle
-const Jack = () => (
-  <group scale={1.4} rotation={[0.3, 0.6, 0.2]}>
-    {[
-      [2.4, 0.6, 0.6, "#06B6D4"],
-      [0.6, 2.4, 0.6, "#14B8A6"],
-      [0.6, 0.6, 2.4, "#0EA5E9"],
-    ].map(([x, y, z, color], i) => (
-      <mesh key={i}>
-        <boxGeometry args={[x, y, z]} />
-        <Satin color={color} />
-      </mesh>
-    ))}
-    <mesh>
-      <boxGeometry args={[1.05, 1.05, 1.05]} />
-      <Satin color="#67E8F9" transparent opacity={0.45} depthWrite={false} />
-    </mesh>
-  </group>
+// Cloud & DevOps: an endless torus knot (the build -> deploy loop)
+const Knot = () => (
+  <mesh scale={1.1}>
+    <torusKnotGeometry args={[0.8, 0.26, 200, 32, 2, 3]} />
+    <Holo color="#A5F3FC" />
+  </mesh>
 );
 
-// IoT & Hardware: a chunky 3D cross made of cubes (stepped silhouette)
+// IoT & Hardware: a 3x3x3 block of cubes without its 8 corners, seen in
+// isometric view (gives the original's stepped hexagon outline), purple on
+// one side and blue on the other.
 const Voxels = () => {
   const cells = useMemo(() => {
     const out = [];
     for (let x = -1; x <= 1; x++)
       for (let y = -1; y <= 1; y++)
-        for (let z = -1; z <= 1; z++) if (Math.abs(x) + Math.abs(y) + Math.abs(z) <= 1) out.push([x, y, z]);
+        for (let z = -1; z <= 1; z++) if (Math.abs(x) + Math.abs(y) + Math.abs(z) <= 2) out.push([x, y, z]);
     return out;
   }, []);
   return (
-    <group scale={0.95}>
+    <group scale={0.74}>
       {cells.map((p, i) => (
         <mesh key={i} position={p}>
-          <boxGeometry args={[1, 1, 1]} />
-          <Satin color={p[1] > 0 || p[0] < 0 ? "#A855F7" : "#3B82F6"} />
+          <boxGeometry args={[0.96, 0.96, 0.96]} />
+          <Satin color={p[0] + p[2] < 0 ? "#A855F7" : p[0] + p[2] > 0 ? "#3B82F6" : "#818CF8"} />
         </mesh>
       ))}
     </group>
   );
 };
 
-const SHAPES = { gem: Gem, geo: Petals, cubes: Jack, hexes: Voxels };
+const SHAPES = { gem: Gem, geo: Petals, cubes: Knot, hexes: Voxels };
+
+// Isometric pose for the voxel block: it sways instead of tumbling so the
+// hexagon silhouette stays readable.
+const ISO_X = Math.atan(1 / Math.SQRT2);
 
 const Lights = () => (
   <>
@@ -147,8 +141,13 @@ const Lights = () => (
 const Spinner = ({ shape }) => {
   const ref = useRef();
   const Shape = SHAPES[shape];
-  useFrame((_, delta) => {
+  const sway = shape === "hexes";
+  useFrame(({ clock }, delta) => {
     if (reducedMotion) return;
+    if (sway) {
+      ref.current.rotation.y = Math.PI / 4 + Math.sin(clock.elapsedTime * 0.7) * 0.45;
+      return;
+    }
     ref.current.rotation.y += delta * 0.5;
     ref.current.rotation.x += delta * 0.15;
   });
@@ -156,9 +155,17 @@ const Spinner = ({ shape }) => {
     <>
       <Lights />
       <Float speed={reducedMotion ? 0 : 1.5} rotationIntensity={0.3} floatIntensity={0.6}>
-        <group ref={ref} rotation={[0.5, 0.7, 0]}>
-          <Shape />
-        </group>
+        {sway ? (
+          <group rotation={[ISO_X, 0, 0]}>
+            <group ref={ref} rotation={[0, Math.PI / 4, 0]}>
+              <Shape />
+            </group>
+          </group>
+        ) : (
+          <group ref={ref} rotation={[0.5, 0.7, 0]}>
+            <Shape />
+          </group>
+        )}
       </Float>
     </>
   );
