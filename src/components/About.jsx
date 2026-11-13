@@ -32,7 +32,6 @@ const ProfileCard = () => (
   >
     <div className='flex items-center gap-3'>
       <span className='relative flex h-3 w-3'>
-        <span className='absolute inline-flex h-full w-full rounded-full bg-[#22D3EE] opacity-60 motion-safe:animate-ping' />
         <span className='relative inline-flex h-3 w-3 rounded-full bg-[#22D3EE]' />
       </span>
       <p className='text-white font-semibold text-[17px]'>Henrique</p>
@@ -70,7 +69,7 @@ const About = () => {
             computer technician skills.
           </p>
           <p>
-            I speak English fluently and I'm open to full stack developer opportunities.
+            Today I work as a full stack developer, and I speak English fluently.
           </p>
         </motion.div>
 

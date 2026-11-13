@@ -117,7 +117,7 @@ import {
     { label: "Location", value: "Brazil" },
     { label: "Languages", value: "Portuguese (native), English (fluent)" },
     { label: "Focus", value: "Full stack: React, Next.js, Node.js and Google Cloud" },
-    { label: "Status", value: "Open to full stack opportunities" },
+    { label: "Currently", value: "Working as a Full Stack Developer" },
   ];
   
   const projects = [
