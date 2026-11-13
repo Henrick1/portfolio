@@ -7,6 +7,7 @@ const Laptop = lazy(() => import("./Laptop"));
 const Earth = lazy(() => import("./Earth"));
 const Stars = lazy(() => import("./Stars"));
 const SkillBalls = lazy(() => import("./SkillBalls"));
+const ServiceIcons = lazy(() => import("./ServiceIcons"));
 
 // Renders the scene only once its container scrolls near the viewport.
 const deferred = (Scene, className) =>
@@ -47,4 +48,14 @@ const SkillBallsCanvas = ({ items, active }) =>
     </SceneBoundary>
   ) : null;
 
-export { EarthCanvas, HeroCanvas, StarsCanvas, SkillBallsCanvas };
+// Same idea for the 3D icons on the "about me" cards.
+const ServiceIconsCanvas = ({ items, active }) =>
+  active ? (
+    <SceneBoundary>
+      <Suspense fallback={null}>
+        <ServiceIcons items={items} />
+      </Suspense>
+    </SceneBoundary>
+  ) : null;
+
+export { EarthCanvas, HeroCanvas, StarsCanvas, SkillBallsCanvas, ServiceIconsCanvas };

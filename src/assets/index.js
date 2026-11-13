@@ -1,8 +1,4 @@
 import logo from "./logo2.webp";
-import backend from "./backend.webp";
-import creator from "./creator.webp";
-import mobile from "./mobile.webp";
-import web from "./web.webp";
 import github from "./github.webp";
 import menu from "./menu.svg";
 import close from "./close.svg";
@@ -39,10 +35,6 @@ import tabfolio from "./tabfolio.webp";
 
 export {
   logo,
-  backend,
-  creator,
-  mobile,
-  web,
   github,
   menu,
   close,
