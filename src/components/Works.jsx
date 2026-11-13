@@ -78,7 +78,7 @@ const Works = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
-        some for class, some for fun, all with the source code open. go ahead and peek.
+        from my own finance app to the stuff I built in college. the code is open on every one of them, go ahead and peek.
       </motion.p>
 
       <div className='mt-14 flex flex-col gap-10'>

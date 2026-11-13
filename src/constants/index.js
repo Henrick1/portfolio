@@ -13,7 +13,7 @@ import {
     git,
     micropython,
     iotpark,
-    javaprjct,
+    contagotas,
     computerstore,
     threejs,
     react,
@@ -118,9 +118,23 @@ import {
   
   const projects = [
     {
+      name: "Conta-Gotas",
+      description:
+        "My personal finance app, built on Open Finance. Bank accounts connect through Pluggy, a webhook keeps transactions in sync with Supabase (Postgres with row-level security and realtime updates), and every expense gets categorized on its own: my past corrections first, then merchant rules, then Claude through the Anthropic API. It also tracks credit card bills, investments, budgets per category and savings goals.",
+      tags: [
+        { name: "Supabase", color: "blue-text-gradient" },
+        { name: "TypeScript / Deno", color: "green-text-gradient" },
+        { name: "Open Finance", color: "pink-text-gradient" },
+        { name: "Claude API", color: "blue-text-gradient" },
+        { name: "GitHub Actions", color: "green-text-gradient" },
+      ],
+      image: contagotas,
+      source_code_link: "https://github.com/Henrick1/conta-gotas",
+    },
+    {
       name: "3D Developer Portfolio",
       description:
-        "This website: a single-page portfolio in React with Three.js scenes rendered through React Three Fiber, styled with Tailwind CSS and built with Vite. 3D models are compressed and loaded only when scrolled into view to keep the first load light.",
+        "This website. React with Three.js scenes through React Three Fiber, styled with Tailwind and built with Vite. Models are compressed and lazy-loaded, the skill balls share a single WebGL canvas, and GitHub Actions redeploys it on every push.",
       tags: [
         { name: "React", color: "blue-text-gradient" },
         { name: "Three.js", color: "green-text-gradient" },
@@ -133,62 +147,23 @@ import {
     {
       name: "IoT Parking",
       description:
-        "Full stack parking management app: a Flask web app with staff login and an admin panel for parking spots, opening hours, sensors and actuators, backed by MySQL through SQLAlchemy. ESP32 sensors (simulated on Wokwi) report free spots in real time over MQTT.",
+        "A parking lot that knows which spots are free. ESP32 ultrasonic sensors (simulated on Wokwi) publish over MQTT to a Flask app, where staff log in to manage spots, opening hours, sensors and actuators, all stored in MySQL through SQLAlchemy.",
       tags: [
-        {
-          name: "Python & Flask",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "ESP32 & MQTT",
-          color: "pink-text-gradient",
-        },
-        {
-          name: "MySQL",
-          color: "green-text-gradient",
-        },
+        { name: "Python & Flask", color: "blue-text-gradient" },
+        { name: "ESP32 & MQTT", color: "pink-text-gradient" },
+        { name: "MySQL", color: "green-text-gradient" },
       ],
       image: iotpark,
       source_code_link: "https://github.com/Henrick1/IOT-Parking",
     },
     {
-      name: "Detective Game",
+      name: "Octacore Store",
       description:
-        "A Java mystery game with a Swing interface: solve riddles, restore a burned clue and interrogate prisoners to catch the culprit. Built with object-oriented design (detective and criminal class hierarchy), file reading, custom exceptions and serialization.",
+        "A full stack online computer store: sign-up and login, product catalogue, shopping cart and checkout with Pix, with a JavaScript front-end and a PHP and MySQL back-end.",
       tags: [
-        {
-          name: "Java",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "Swing",
-          color: "green-text-gradient",
-        },
-        {
-          name: "OOP",
-          color: "pink-text-gradient",
-        },
-      ],
-      image: javaprjct,
-      source_code_link: "https://github.com/Henrick1/Java-project",
-    },
-    {
-      name: "Octacore Computer Store",
-      description:
-        "Full stack online computer store: account sign-up and login, product catalogue, shopping cart and checkout with Pix, with a JavaScript front-end and a PHP and SQL back-end.",
-      tags: [
-        {
-          name: "HTML & CSS",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "JavaScript",
-          color: "green-text-gradient",
-        },
-        {
-          name: "PHP & SQL",
-          color: "pink-text-gradient",
-        },
+        { name: "HTML & CSS", color: "blue-text-gradient" },
+        { name: "JavaScript", color: "green-text-gradient" },
+        { name: "PHP & MySQL", color: "pink-text-gradient" },
       ],
       image: computerstore,
       source_code_link: "https://github.com/Henrick1/Computer-Store",

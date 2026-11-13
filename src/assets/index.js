@@ -33,9 +33,9 @@ import figma from "./tech/figma.webp";
 import mysql from "./tech/mysql.webp";
 
 
-import iotpark from "./circuit.webp";
-import javaprjct from "./javaproject.webp";
-import computerstore from "./computerstore.webp";
+import iotpark from "./cover-iot-parking.webp";
+import contagotas from "./cover-conta-gotas.webp";
+import computerstore from "./cover-octacore.webp";
 
 export {
   logo,
@@ -71,6 +71,6 @@ export {
   figma,
   mysql,
   iotpark,
-  javaprjct,
+  contagotas,
   computerstore,
 };
