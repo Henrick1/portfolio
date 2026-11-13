@@ -35,7 +35,7 @@ import mysql from "./tech/mysql.webp";
 
 import iotpark from "./circuit.webp";
 import contagotas from "./contagotas.webp";
-import computerstore from "./computerstore.webp";
+import tabfolio from "./tabfolio.webp";
 
 export {
   logo,
@@ -72,5 +72,5 @@ export {
   mysql,
   iotpark,
   contagotas,
-  computerstore,
+  tabfolio,
 };

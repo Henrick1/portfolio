@@ -14,7 +14,7 @@ import {
     micropython,
     iotpark,
     contagotas,
-    computerstore,
+    tabfolio,
     threejs,
     react,
     typescript,
@@ -144,16 +144,16 @@ import {
       source_code_link: "https://github.com/Henrick1/IOT-Parking",
     },
     {
-      name: "Octacore Store",
+      name: "Tabfolio",
       description:
-        "A full stack online computer store: sign-up and login, product catalogue, shopping cart and checkout with Pix, with a JavaScript front-end and a PHP and MySQL back-end.",
+        "A browser extension for Chrome, Edge, Brave and Opera that keeps tabs organized in workspaces per project. Switching workspaces saves and closes the current tabs and opens the next set in the same window. Every tab change is saved automatically, pinned tabs stay global, and each workspace has drag-and-drop resource groups, search, keyboard shortcuts, lazy loading to save memory and JSON backup. No server: everything lives in chrome.storage.",
       tags: [
-        { name: "HTML & CSS", color: "blue-text-gradient" },
+        { name: "Chrome Extension (MV3)", color: "blue-text-gradient" },
         { name: "JavaScript", color: "green-text-gradient" },
-        { name: "PHP & MySQL", color: "pink-text-gradient" },
+        { name: "Service Worker", color: "pink-text-gradient" },
+        { name: "chrome.storage", color: "blue-text-gradient" },
       ],
-      image: computerstore,
-      source_code_link: "https://github.com/Henrick1/Computer-Store",
+      image: tabfolio,
     },
     {
       name: "3D Developer Portfolio",

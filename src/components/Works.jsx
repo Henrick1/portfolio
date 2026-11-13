@@ -7,9 +7,14 @@ import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 
 // Each project is a wide row: screenshot on one side, details on the other,
-// alternating sides on large screens.
+// alternating sides on large screens. Projects without public code (no
+// source_code_link) show a "private repo" badge instead of the button.
 const ProjectRow = ({ index, name, description, tags, image, source_code_link }) => {
   const reversed = index % 2 === 1;
+  const Frame = source_code_link ? "a" : "div";
+  const frameProps = source_code_link
+    ? { href: source_code_link, target: "_blank", rel: "noreferrer", "aria-label": `Open ${name} on GitHub` }
+    : {};
 
   return (
     <motion.article
@@ -21,12 +26,9 @@ const ProjectRow = ({ index, name, description, tags, image, source_code_link })
           reversed ? "lg:flex-row-reverse" : "lg:flex-row"
         }`}
       >
-        <a
-          href={source_code_link}
-          target='_blank'
-          rel='noreferrer'
+        <Frame
+          {...frameProps}
           className='group relative w-full lg:w-[55%] shrink-0 overflow-hidden rounded-2xl border border-white/5'
-          aria-label={`Open ${name} on GitHub`}
         >
           <img
             src={image}
@@ -34,7 +36,7 @@ const ProjectRow = ({ index, name, description, tags, image, source_code_link })
             loading='lazy'
             className='w-full aspect-[16/10] object-cover transition-transform duration-500 group-hover:scale-[1.03]'
           />
-        </a>
+        </Frame>
 
         <div className='flex-1 w-full'>
           <h3 className='text-white font-bold text-[24px] sm:text-[28px] leading-tight'>{name}</h3>
@@ -51,15 +53,25 @@ const ProjectRow = ({ index, name, description, tags, image, source_code_link })
             ))}
           </ul>
 
-          <a
-            href={source_code_link}
-            target='_blank'
-            rel='noreferrer'
-            className='mt-8 inline-flex items-center gap-2 bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold py-2.5 px-5 rounded-xl transition-colors'
-          >
-            <img src={github} alt='' className='w-5 h-5 object-contain' />
-            view the code
-          </a>
+          {source_code_link ? (
+            <a
+              href={source_code_link}
+              target='_blank'
+              rel='noreferrer'
+              className='mt-8 inline-flex items-center gap-2 bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold py-2.5 px-5 rounded-xl transition-colors'
+            >
+              <img src={github} alt='' className='w-5 h-5 object-contain' />
+              view the code
+            </a>
+          ) : (
+            <p className='mt-8 inline-flex items-center gap-2 font-mono text-[14px] text-secondary border border-white/10 rounded-xl py-2.5 px-4'>
+              <svg viewBox='0 0 24 24' className='w-4 h-4' fill='none' stroke='currentColor' strokeWidth='2' aria-hidden='true'>
+                <rect x='5' y='11' width='14' height='9' rx='2' />
+                <path d='M8 11V8a4 4 0 0 1 8 0v3' />
+              </svg>
+              private repo
+            </p>
+          )}
         </div>
       </div>
     </motion.article>
@@ -78,7 +90,7 @@ const Works = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
-        from my own finance app to the stuff I built in college. the code is open on every one of them, go ahead and peek.
+        from my own finance app and browser extension to the stuff I built in college. most of the code is open, go ahead and peek.
       </motion.p>
 
       <div className='mt-14 flex flex-col gap-10'>
