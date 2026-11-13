@@ -6,6 +6,7 @@ import About from './About';
 import Tech from './Tech';
 import Works from './Works';
 import Contact from './Contact';
+import Footer from './Footer';
 
 export {
   Hero,
@@ -15,6 +16,7 @@ export {
   Tech,
   Works,
   Contact,
+  Footer,
   EarthCanvas,
   BallCanvas,
   HeroCanvas,

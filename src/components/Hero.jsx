@@ -19,7 +19,7 @@ const Hero = () => {
             Hi, I'm <span className='bg-gradient-to-r from-[#3B82F6] to-[#22D3EE] bg-clip-text text-transparent'>Henrique</span>
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            Computer Science student <br className='sm:block hidden' />
+            Computer Scientist <br className='sm:block hidden' />
             and Software Developer.
           </p>
           <div className='sm:mt-8 mt-5 flex flex-wrap sm:gap-4 gap-3 pointer-events-auto'>

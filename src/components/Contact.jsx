@@ -6,6 +6,7 @@ import { styles } from '../styles';
 import { EarthCanvas } from './canvas';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
+import { github } from '../assets';
 
 
 const Contact = () => {
@@ -60,11 +61,23 @@ const Contact = () => {
       >
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
+        <p className="mt-4 text-secondary text-[16px] leading-[26px]">
+          Have a job opportunity, a project or a question? Send me a message and I'll reply by email.
+        </p>
+        <a
+          href="https://github.com/Henrick1"
+          target="_blank"
+          rel="noreferrer"
+          className="mt-4 inline-flex items-center gap-2 text-white font-medium hover:text-[#22D3EE] transition-colors"
+        >
+          <img src={github} alt="" className="w-5 h-5 object-contain" />
+          github.com/Henrick1
+        </a>
 
         <form
           ref={formRef}
           onSubmit={handleSubmit}
-          className="mt-12 flex flex-col gap-8"
+          className="mt-10 flex flex-col gap-8"
         >
           <label className="flex flex-col">
             <span className="text-white font-medium mb-4">Your name</span>

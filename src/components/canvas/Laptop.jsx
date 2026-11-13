@@ -29,7 +29,7 @@ const C = {
 const CODE = [
   [["class ", C.kw], ["Henrique", C.cls], [":", C.txt]],
   [["    role ", C.attr], ["= ", C.txt], ['"Software Developer"', C.str]],
-  [["    studying ", C.attr], ["= ", C.txt], ['"Computer Science"', C.str]],
+  [["    degree ", C.attr], ["= ", C.txt], ['"B.Sc. Computer Science"', C.str]],
   [["    based_in ", C.attr], ["= ", C.txt], ['"Brazil"', C.str]],
   [],
   [["    stack ", C.attr], ["= [", C.txt], ['"Python"', C.str], [", ", C.txt], ['"Java"', C.str], [", ", C.txt], ['"C"', C.str], [",", C.txt]],
