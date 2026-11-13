@@ -1,4 +1,4 @@
-import { EarthCanvas, HeroCanvas, StarsCanvas } from './canvas';
+import { EarthCanvas, HeroCanvas, StarsCanvas, SkillBallsCanvas } from './canvas';
 import Hero from './Hero';
 import HeroGrid from './HeroGrid';
 import Navbar from './Navbar';
@@ -19,5 +19,6 @@ export {
   Footer,
   EarthCanvas,
   HeroCanvas,
-  StarsCanvas
+  StarsCanvas,
+  SkillBallsCanvas
 }
