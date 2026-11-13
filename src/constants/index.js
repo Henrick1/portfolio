@@ -132,19 +132,6 @@ import {
       source_code_link: "https://github.com/Henrick1/conta-gotas",
     },
     {
-      name: "3D Developer Portfolio",
-      description:
-        "This website. React with Three.js scenes through React Three Fiber, styled with Tailwind and built with Vite. Models are compressed and lazy-loaded, the skill balls share a single WebGL canvas, and GitHub Actions redeploys it on every push.",
-      tags: [
-        { name: "React", color: "blue-text-gradient" },
-        { name: "Three.js", color: "green-text-gradient" },
-        { name: "Tailwind CSS", color: "pink-text-gradient" },
-        { name: "Vite", color: "blue-text-gradient" },
-      ],
-      image: portfolio,
-      source_code_link: "https://github.com/Henrick1/portfolio",
-    },
-    {
       name: "IoT Parking",
       description:
         "A parking lot that knows which spots are free. ESP32 ultrasonic sensors (simulated on Wokwi) publish over MQTT to a Flask app, where staff log in to manage spots, opening hours, sensors and actuators, all stored in MySQL through SQLAlchemy.",
@@ -167,6 +154,19 @@ import {
       ],
       image: computerstore,
       source_code_link: "https://github.com/Henrick1/Computer-Store",
+    },
+    {
+      name: "3D Developer Portfolio",
+      description:
+        "This website. React with Three.js scenes through React Three Fiber, styled with Tailwind and built with Vite. Models are compressed and lazy-loaded, the skill balls share a single WebGL canvas, and GitHub Actions redeploys it on every push.",
+      tags: [
+        { name: "React", color: "blue-text-gradient" },
+        { name: "Three.js", color: "green-text-gradient" },
+        { name: "Tailwind CSS", color: "pink-text-gradient" },
+        { name: "Vite", color: "blue-text-gradient" },
+      ],
+      image: portfolio,
+      source_code_link: "https://github.com/Henrick1/portfolio",
     },
   ];
   
