@@ -25,6 +25,24 @@ const Holo = ({ color = "#ffffff", ...props }) => (
   />
 );
 
+// Big flat faces reflect a single (mostly dark) direction as chrome, so the
+// cube shapes use a satin version: lit colour plus an iridescent clearcoat.
+const Satin = ({ color, ...props }) => (
+  <meshPhysicalMaterial
+    color={color}
+    emissive={color}
+    emissiveIntensity={0.1}
+    metalness={0.35}
+    roughness={0.32}
+    iridescence={0.45}
+    iridescenceIOR={1.5}
+    iridescenceThicknessRange={[200, 700]}
+    clearcoat={1}
+    clearcoatRoughness={0.15}
+    {...props}
+  />
+);
+
 // Front-end: faceted icosahedron
 const Gem = () => (
   <mesh scale={1.7}>
@@ -68,20 +86,20 @@ const Petals = () => {
 
 // Cloud & DevOps: three long bars crossing, with a glassy cube in the middle
 const Jack = () => (
-  <group scale={1.25} rotation={[0.3, 0.6, 0.2]}>
+  <group scale={1.4} rotation={[0.3, 0.6, 0.2]}>
     {[
-      [2.4, 0.6, 0.6],
-      [0.6, 2.4, 0.6],
-      [0.6, 0.6, 2.4],
-    ].map((size, i) => (
+      [2.4, 0.6, 0.6, "#06B6D4"],
+      [0.6, 2.4, 0.6, "#14B8A6"],
+      [0.6, 0.6, 2.4, "#0EA5E9"],
+    ].map(([x, y, z, color], i) => (
       <mesh key={i}>
-        <boxGeometry args={size} />
-        <Holo color="#5EEAD4" />
+        <boxGeometry args={[x, y, z]} />
+        <Satin color={color} />
       </mesh>
     ))}
     <mesh>
       <boxGeometry args={[1.05, 1.05, 1.05]} />
-      <Holo color="#A5F3FC" transparent opacity={0.35} roughness={0.05} />
+      <Satin color="#67E8F9" transparent opacity={0.45} depthWrite={false} />
     </mesh>
   </group>
 );
@@ -96,11 +114,11 @@ const Voxels = () => {
     return out;
   }, []);
   return (
-    <group scale={0.78}>
+    <group scale={0.95}>
       {cells.map((p, i) => (
         <mesh key={i} position={p}>
           <boxGeometry args={[1, 1, 1]} />
-          <Holo color={p[1] > 0 || p[0] < 0 ? "#E9D5FF" : "#7DD3FC"} />
+          <Satin color={p[1] > 0 || p[0] < 0 ? "#A855F7" : "#3B82F6"} />
         </mesh>
       ))}
     </group>
@@ -111,8 +129,9 @@ const SHAPES = { gem: Gem, geo: Petals, cubes: Jack, hexes: Voxels };
 
 const Lights = () => (
   <>
-    <ambientLight intensity={0.4} />
-    <directionalLight position={[3, 4, 5]} intensity={1.2} />
+    <ambientLight intensity={0.45} />
+    <directionalLight position={[3, 4, 5]} intensity={1.6} />
+    <directionalLight position={[-4, -2, 3]} intensity={0.7} color="#E879F9" />
     {/* Coloured panels give the holographic reflections; rendered once per view. */}
     <Environment resolution={64} frames={1}>
       <color attach="background" args={["#1E2A6E"]} />
