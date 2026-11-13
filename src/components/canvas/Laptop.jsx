@@ -34,7 +34,6 @@ const CODE = [
   [["  frontend", C.attr], [": [", C.txt], ['"React"', C.str], [", ", C.txt], ['"Next.js"', C.str], [", ", C.txt], ['"TypeScript"', C.str], ["],", C.txt]],
   [["  backend", C.attr], [": [", C.txt], ['"Node.js"', C.str], [", ", C.txt], ['"Express"', C.str], ["],", C.txt]],
   [["  cloud", C.attr], [": [", C.txt], ['"GCP"', C.str], [", ", C.txt], ['"Firebase"', C.str], [", ", C.txt], ['"Docker"', C.str], ["],", C.txt]],
-  [["  openToWork", C.attr], [": ", C.txt], ["true", C.kw], [",", C.txt]],
   [["}", C.txt], [";", C.txt]],
   [],
   [["export default ", C.kw], ["henrique", C.cls], [";", C.txt]],
