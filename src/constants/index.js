@@ -26,6 +26,9 @@ import {
     electron,
     figma,
     mysql,
+    postgresql,
+    linux,
+    claude,
   } from "../assets";
   
   export const navLinks = [
@@ -82,6 +85,7 @@ import {
         { name: "Java", icon: java },
         { name: "MySQL", icon: mysql },
         { name: "Firebase", icon: firebase },
+        { name: "PostgreSQL", icon: postgresql },
       ],
     },
     {
@@ -92,6 +96,8 @@ import {
         { name: "Git", icon: git },
         { name: "Electron", icon: electron },
         { name: "Figma", icon: figma },
+        { name: "Linux", icon: linux },
+        { name: "Claude", icon: claude },
       ],
     },
     {
