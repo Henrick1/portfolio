@@ -35,19 +35,23 @@ import {
   
   const services = [
     {
-      title: "Python Developer",
+      title: "Python & Flask",
+      description: "Web apps with Flask, Flask-Login and SQLAlchemy",
       icon: mobile,
     },
     {
-      title: "Web Developer",
+      title: "Web Development",
+      description: "HTML, CSS, JavaScript and PHP sites backed by SQL",
       icon: web,
     },
     {
-      title: "Backend Developer",
+      title: "IoT & Embedded",
+      description: "ESP32 and MicroPython sensors talking over MQTT",
       icon: backend,
     },
     {
       title: "Computer Technician",
+      description: "Hardware assembly, maintenance and troubleshooting",
       icon: creator,
     },
   ];
@@ -99,20 +103,20 @@ import {
   
   const projects = [
     {
-      name: "IoT parking",
+      name: "IoT Parking",
       description:
-        "A parking-spot monitor: ESP32 sensors on a physical model send data to a Flask website backed by a database.",
+        "Smart parking system: ESP32 sensors (simulated on Wokwi) report free spots over MQTT to a Flask web app. Staff log in to manage parking spots, opening hours, sensors and actuators, with data stored in MySQL through SQLAlchemy.",
       tags: [
         {
-          name: "Web Flask",
+          name: "Python & Flask",
           color: "blue-text-gradient",
         },
         {
-          name: "ESP32",
+          name: "ESP32 & MQTT",
           color: "pink-text-gradient",
         },
         {
-          name: "Python",
+          name: "MySQL",
           color: "green-text-gradient",
         },
       ],
@@ -120,22 +124,30 @@ import {
       source_code_link: "https://github.com/Henrick1/IOT-Parking",
     },
     {
-      name: "Puzzle game",
+      name: "Detective Game",
       description:
-        "A Java puzzle game with a mystery story, built for a programming course using Swing interfaces.",
+        "A Java mystery game with a Swing interface: solve riddles, restore a burned clue and interrogate prisoners to catch the culprit. Built with object-oriented design (detective and criminal class hierarchy), file reading, custom exceptions and serialization.",
       tags: [
         {
           name: "Java",
           color: "blue-text-gradient",
+        },
+        {
+          name: "Swing",
+          color: "green-text-gradient",
+        },
+        {
+          name: "OOP",
+          color: "pink-text-gradient",
         },
       ],
       image: javaprjct,
       source_code_link: "https://github.com/Henrick1/Java-project",
     },
     {
-      name: "Computer store",
+      name: "Octacore Computer Store",
       description:
-        "An online store built for a course, with a complete front-end, a products area and a PHP + SQL back-end.",
+        "An online computer store built for my Web Development course: account sign-up and login, product catalogue, shopping cart and checkout with Pix, with a PHP and SQL back-end.",
       tags: [
         {
           name: "HTML & CSS",
@@ -146,7 +158,7 @@ import {
           color: "green-text-gradient",
         },
         {
-          name: "SQL & PHP",
+          name: "PHP & SQL",
           color: "pink-text-gradient",
         },
       ],

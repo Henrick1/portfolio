@@ -37,8 +37,8 @@ const CODE = [
   [],
   [["    def ", C.kw], ["projects", C.cls], ["(self):", C.txt]],
   [["        return ", C.kw], ["[", C.txt], ['"IoT Parking"', C.str], [",", C.txt]],
-  [["                ", C.txt], ['"Puzzle Game"', C.str], [",", C.txt]],
-  [["                ", C.txt], ['"Computer Store"', C.str], ["]", C.txt]],
+  [["                ", C.txt], ['"Detective Game"', C.str], [",", C.txt]],
+  [["                ", C.txt], ['"Octacore Store"', C.str], ["]", C.txt]],
 ];
 const TOTAL_CHARS = CODE.reduce((n, line) => n + line.reduce((m, [t]) => m + t.length, 0) + 1, 0);
 
