@@ -39,7 +39,7 @@ const Contact = () => {
     )
     .then(() => {
       setLoading(false);
-      alert('Thank you. I will get back to you as soon as possible');
+      alert("message sent! I'll get back to you soon.");
 
       setForm({
         name: '',
@@ -49,7 +49,7 @@ const Contact = () => {
     }, (error) => {
       setLoading(false)
       console.error(error);
-      alert('Your message could not be sent. Please try again or email me directly.')
+      alert('oops, something broke on my side, please try again in a bit.')
     })
   }
 
@@ -59,10 +59,10 @@ const Contact = () => {
         variants={slideIn('left',"tween",0.2,1)}
         className="flex-[0.75] bg-black-100 p-8 rounded-2xl"
       >
-        <p className={styles.sectionSubText}>Get in touch</p>
-        <h3 className={styles.sectionHeadText}>Contact.</h3>
+        <p className={styles.prompt}>&gt; ping henrick</p>
+        <h3 className={styles.sectionHeadText}>say hi.</h3>
         <p className="mt-4 text-secondary text-[16px] leading-[26px]">
-          Want to talk about a project, an idea or something you saw here? Send me a message and I'll reply by email.
+          got a project, an idea, or just wanna talk about games? drop a message and I'll reply by email.
         </p>
         <a
           href="https://github.com/Henrick1"
@@ -80,7 +80,7 @@ const Contact = () => {
           className="mt-10 flex flex-col gap-8"
         >
           <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Your name</span>
+            <span className="text-white font-medium mb-4">your name</span>
             <input 
               type="text"
               name="name"
@@ -88,12 +88,12 @@ const Contact = () => {
               autoComplete="name"
               value={form.name}
               onChange={handleChange}
-              placeholder="Enter name"
+              placeholder="what should I call you?"
               className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-transparent focus:border-[#3B82F6] transition-colors font-medium"
             />
           </label>
           <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Your Email</span>
+            <span className="text-white font-medium mb-4">your email</span>
             <input 
               type="email"
               name="email"
@@ -101,19 +101,19 @@ const Contact = () => {
               autoComplete="email"
               value={form.email}
               onChange={handleChange}
-              placeholder="Enter email"
+              placeholder="where can I reply?"
               className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-transparent focus:border-[#3B82F6] transition-colors font-medium"
             />
           </label>
           <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Your Message</span>
+            <span className="text-white font-medium mb-4">your message</span>
             <textarea
               rows="7" 
               name="message"
               required
               value={form.message}
               onChange={handleChange}
-              placeholder="Enter your message"
+              placeholder="what's up?"
               className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-transparent focus:border-[#3B82F6] transition-colors font-medium"
             />
           </label>
@@ -122,7 +122,7 @@ const Contact = () => {
             disabled={loading}
             className="bg-[#3B82F6] hover:bg-[#2563EB] disabled:opacity-60 transition-colors py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl"
           >
-            {loading ? 'Sending...' : 'Send'}
+            {loading ? 'sending...' : 'send it'}
           </button>
         </form>
       </motion.div>

@@ -25,18 +25,18 @@ const C = {
   dim: "#475569",
 };
 
-// Each line is a list of [text, colour] tokens.
+// Each line is a list of [text, colour] tokens. Mirrors the GitHub README.
 const CODE = [
-  [["const ", C.kw], ["henrique", C.cls], [" = {", C.txt]],
-  [["  role", C.attr], [": ", C.txt], ['"Full Stack Developer"', C.str], [",", C.txt]],
+  [["const ", C.kw], ["henrick", C.cls], [" = {", C.txt]],
+  [["  role", C.attr], [": ", C.txt], ['"full stack dev"', C.str], [",", C.txt]],
   [["  degree", C.attr], [": ", C.txt], ['"B.Sc. Computer Science"', C.str], [",", C.txt]],
-  [["  basedIn", C.attr], [": ", C.txt], ['"Brazil"', C.str], [",", C.txt]],
-  [["  frontend", C.attr], [": [", C.txt], ['"React"', C.str], [", ", C.txt], ['"Next.js"', C.str], [", ", C.txt], ['"TypeScript"', C.str], ["],", C.txt]],
-  [["  backend", C.attr], [": [", C.txt], ['"Node.js"', C.str], [", ", C.txt], ['"Express"', C.str], ["],", C.txt]],
-  [["  cloud", C.attr], [": [", C.txt], ['"GCP"', C.str], [", ", C.txt], ['"Firebase"', C.str], [", ", C.txt], ['"Docker"', C.str], ["],", C.txt]],
-  [["}", C.txt], [";", C.txt]],
+  [["  stack", C.attr], [": [", C.txt], ['"react"', C.str], [", ", C.txt], ['"next"', C.str], [", ", C.txt], ['"node"', C.str], [", ", C.txt], ['"gcp"', C.str], ["],", C.txt]],
+  [["  rn", C.attr], [": [", C.txt], ['"shipping web apps"', C.str], [", ", C.txt], ['"messing with Three.js"', C.str], ["],", C.txt]],
+  [["  offline", C.attr], [": [", C.txt], ['"video games"', C.str], [", ", C.txt], ['"puzzles"', C.str], ["],", C.txt]],
+  [["  vibe", C.attr], [": ", C.txt], ['"if it works, don\'t touch it"', C.str], [",", C.txt]],
+  [["};", C.txt]],
   [],
-  [["export default ", C.kw], ["henrique", C.cls], [";", C.txt]],
+  [["export default ", C.kw], ["henrick", C.cls], [";", C.txt]],
 ];
 const TOTAL_CHARS = CODE.reduce((n, line) => n + line.reduce((m, [t]) => m + t.length, 0) + 1, 0);
 
@@ -62,7 +62,7 @@ const drawScreen = (ctx, chars, cursorOn) => {
   ctx.fillRect(130, 10, 190, 3);
   ctx.font = "500 22px ui-monospace, Menlo, Consolas, monospace";
   ctx.fillStyle = C.txt;
-  ctx.fillText("henrique.ts", 155, 40);
+  ctx.fillText("henrick.js", 155, 40);
 
   // code
   ctx.font = "500 27px ui-monospace, Menlo, Consolas, monospace";
