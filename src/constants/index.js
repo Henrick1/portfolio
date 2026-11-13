@@ -16,6 +16,16 @@ import {
     javaprjct,
     computerstore,
     threejs,
+    react,
+    typescript,
+    nextjs,
+    tailwind,
+    nodejs,
+    express,
+    gcp,
+    firebase,
+    docker,
+    portfolio,
   } from "../assets";
   
   export const navLinks = [
@@ -39,51 +49,65 @@ import {
   
   const services = [
     {
-      title: "Python & Flask",
-      description: "Web apps with Flask, Flask-Login and SQLAlchemy",
-      icon: mobile,
-    },
-    {
-      title: "Web Development",
-      description: "HTML, CSS, JavaScript and PHP sites backed by SQL",
+      title: "Front-end",
+      description: "React, Next.js, TypeScript and Tailwind CSS interfaces",
       icon: web,
     },
     {
-      title: "IoT & Embedded",
-      description: "ESP32 and MicroPython sensors talking over MQTT",
+      title: "Back-end & APIs",
+      description: "Node.js and Express REST APIs, authentication and data modelling",
       icon: backend,
     },
     {
-      title: "Computer Technician",
-      description: "Hardware assembly, maintenance and troubleshooting",
+      title: "Cloud & DevOps",
+      description: "Google Cloud, Firebase and Docker, from build to deploy",
+      icon: mobile,
+    },
+    {
+      title: "IoT & Hardware",
+      description: "ESP32 and MicroPython projects, plus computer technician skills",
       icon: creator,
     },
   ];
   
   const techGroups = [
     {
-      title: "Languages",
+      title: "Front-end",
       items: [
-        { name: "Python", icon: python },
-        { name: "Java", icon: java },
-        { name: "C", icon: c },
+        { name: "React", icon: react },
+        { name: "Next.js", icon: nextjs },
+        { name: "TypeScript", icon: typescript },
         { name: "JavaScript", icon: javascript },
-        { name: "SQL", icon: sql },
-      ],
-    },
-    {
-      title: "Web",
-      items: [
+        { name: "Tailwind CSS", icon: tailwind },
         { name: "HTML5", icon: html },
         { name: "CSS3", icon: css },
         { name: "Three.js", icon: threejs },
       ],
     },
     {
-      title: "Hardware & tools",
+      title: "Back-end",
+      items: [
+        { name: "Node.js", icon: nodejs },
+        { name: "Express", icon: express },
+        { name: "Python", icon: python },
+        { name: "Java", icon: java },
+        { name: "SQL", icon: sql },
+      ],
+    },
+    {
+      title: "Cloud & DevOps",
+      items: [
+        { name: "Google Cloud", icon: gcp },
+        { name: "Firebase", icon: firebase },
+        { name: "Docker", icon: docker },
+        { name: "Git", icon: git },
+      ],
+    },
+    {
+      title: "IoT & low-level",
       items: [
         { name: "MicroPython", icon: micropython },
-        { name: "Git", icon: git },
+        { name: "C", icon: c },
       ],
     },
   ];
@@ -92,15 +116,28 @@ import {
     { label: "Education", value: "B.Sc. in Computer Science" },
     { label: "Location", value: "Brazil" },
     { label: "Languages", value: "Portuguese (native), English (fluent)" },
-    { label: "Focus", value: "Python back-end, web and IoT" },
-    { label: "Status", value: "Open to developer opportunities" },
+    { label: "Focus", value: "Full stack: React, Next.js, Node.js and Google Cloud" },
+    { label: "Status", value: "Open to full stack opportunities" },
   ];
   
   const projects = [
     {
+      name: "3D Developer Portfolio",
+      description:
+        "This website: a single-page portfolio in React with Three.js scenes rendered through React Three Fiber, styled with Tailwind CSS and built with Vite. 3D models are compressed and loaded only when scrolled into view to keep the first load light.",
+      tags: [
+        { name: "React", color: "blue-text-gradient" },
+        { name: "Three.js", color: "green-text-gradient" },
+        { name: "Tailwind CSS", color: "pink-text-gradient" },
+        { name: "Vite", color: "blue-text-gradient" },
+      ],
+      image: portfolio,
+      source_code_link: "https://github.com/Henrick1/portfolio",
+    },
+    {
       name: "IoT Parking",
       description:
-        "Smart parking system: ESP32 sensors (simulated on Wokwi) report free spots over MQTT to a Flask web app. Staff log in to manage parking spots, opening hours, sensors and actuators, with data stored in MySQL through SQLAlchemy.",
+        "Full stack parking management app: a Flask web app with staff login and an admin panel for parking spots, opening hours, sensors and actuators, backed by MySQL through SQLAlchemy. ESP32 sensors (simulated on Wokwi) report free spots in real time over MQTT.",
       tags: [
         {
           name: "Python & Flask",
@@ -142,7 +179,7 @@ import {
     {
       name: "Octacore Computer Store",
       description:
-        "An online computer store built for my Web Development course: account sign-up and login, product catalogue, shopping cart and checkout with Pix, with a PHP and SQL back-end.",
+        "Full stack online computer store: account sign-up and login, product catalogue, shopping cart and checkout with Pix, with a JavaScript front-end and a PHP and SQL back-end.",
       tags: [
         {
           name: "HTML & CSS",

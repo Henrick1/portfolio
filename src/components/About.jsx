@@ -59,17 +59,18 @@ const About = () => {
       <div className='mt-8 grid lg:grid-cols-[1.5fr_1fr] gap-10 items-start'>
         <motion.div variants={fadeIn("", "", 0.1, 1)} className='text-secondary text-[17px] leading-[30px] flex flex-col gap-5'>
           <p>
-            I'm a Computer Scientist from Brazil who likes building complete projects, from the hardware
-            to the web page. I've connected ESP32 sensors to a Flask website over MQTT, written a detective
-            game in Java with Swing and built an online store with PHP and SQL.
+            I'm a Full Stack Developer and Computer Scientist from Brazil. I build web applications end to
+            end: interfaces in React, Next.js and TypeScript styled with Tailwind CSS, APIs in Node.js and
+            Express, and deployments on Google Cloud and Firebase, packaged with Docker.
           </p>
           <p>
-            I work mainly with Python, Java, C, JavaScript and SQL, and I used Three.js for the 3D in this
-            portfolio. My degree covered front-end and back-end development, assembly, discrete mathematics
-            and cyber security, and I also have computer technician skills.
+            My degree in Computer Science gave me a solid base in algorithms, databases, assembly, discrete
+            mathematics and cyber security, and along the way I've also worked with Python, Java, C and SQL.
+            Outside the web, I like hardware: I've connected ESP32 sensors to a web app over MQTT and I have
+            computer technician skills.
           </p>
           <p>
-            I speak English fluently and I'm looking for opportunities as a software developer.
+            I speak English fluently and I'm open to full stack developer opportunities.
           </p>
         </motion.div>
 

@@ -62,7 +62,7 @@ const Contact = () => {
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
         <p className="mt-4 text-secondary text-[16px] leading-[26px]">
-          Have a job opportunity, a project or a question? Send me a message and I'll reply by email.
+          Hiring a full stack developer, or have a project or a question? Send me a message and I'll reply by email.
         </p>
         <a
           href="https://github.com/Henrick1"

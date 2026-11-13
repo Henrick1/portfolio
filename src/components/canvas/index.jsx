@@ -5,7 +5,6 @@ import SceneBoundary from "./SceneBoundary";
 // three.js is split out of the main bundle so the page text paints first.
 const Laptop = lazy(() => import("./Laptop"));
 const Earth = lazy(() => import("./Earth"));
-const Ball = lazy(() => import("./Ball"));
 const Stars = lazy(() => import("./Stars"));
 
 // Renders the scene only once its container scrolls near the viewport.
@@ -34,7 +33,6 @@ const HeroCanvas = () => (
 );
 
 const EarthCanvas = deferred(Earth, "w-full h-full");
-const BallCanvas = deferred(Ball, "w-full h-full");
 const StarsCanvas = deferred(Stars, "w-full h-auto absolute inset-0 z-[-1]");
 
-export { EarthCanvas, BallCanvas, HeroCanvas, StarsCanvas };
+export { EarthCanvas, HeroCanvas, StarsCanvas };

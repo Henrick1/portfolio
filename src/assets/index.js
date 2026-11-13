@@ -17,6 +17,16 @@ import c from "./tech/c.webp";
 import sql from "./tech/sql.webp";
 import python from "./tech/python.webp";
 import threejs from "./tech/threejs.webp";
+import react from "./tech/react.webp";
+import typescript from "./tech/typescript.webp";
+import nextjs from "./tech/nextjs.webp";
+import tailwind from "./tech/tailwind.webp";
+import nodejs from "./tech/nodejs.webp";
+import express from "./tech/express.webp";
+import gcp from "./tech/gcp.webp";
+import firebase from "./tech/firebase.webp";
+import docker from "./tech/docker.webp";
+import portfolio from "./portfolio.webp";
 
 
 import iotpark from "./circuit.webp";
@@ -42,6 +52,16 @@ export {
   sql,
   python,
   threejs,
+  react,
+  typescript,
+  nextjs,
+  tailwind,
+  nodejs,
+  express,
+  gcp,
+  firebase,
+  docker,
+  portfolio,
   iotpark,
   javaprjct,
   computerstore,

@@ -8,7 +8,7 @@ import {
 } from "@react-three/drei";
 import * as THREE from "three";
 
-// Hero 3D: a laptop whose screen types out a short Python "about me".
+// Hero 3D: a laptop whose screen types out a short TypeScript "about me".
 // Built in code: no model download.
 
 const reducedMotion =
@@ -27,18 +27,17 @@ const C = {
 
 // Each line is a list of [text, colour] tokens.
 const CODE = [
-  [["class ", C.kw], ["Henrique", C.cls], [":", C.txt]],
-  [["    role ", C.attr], ["= ", C.txt], ['"Software Developer"', C.str]],
-  [["    degree ", C.attr], ["= ", C.txt], ['"B.Sc. Computer Science"', C.str]],
-  [["    based_in ", C.attr], ["= ", C.txt], ['"Brazil"', C.str]],
+  [["const ", C.kw], ["henrique", C.cls], [" = {", C.txt]],
+  [["  role", C.attr], [": ", C.txt], ['"Full Stack Developer"', C.str], [",", C.txt]],
+  [["  degree", C.attr], [": ", C.txt], ['"B.Sc. Computer Science"', C.str], [",", C.txt]],
+  [["  basedIn", C.attr], [": ", C.txt], ['"Brazil"', C.str], [",", C.txt]],
+  [["  frontend", C.attr], [": [", C.txt], ['"React"', C.str], [", ", C.txt], ['"Next.js"', C.str], [", ", C.txt], ['"TypeScript"', C.str], ["],", C.txt]],
+  [["  backend", C.attr], [": [", C.txt], ['"Node.js"', C.str], [", ", C.txt], ['"Express"', C.str], ["],", C.txt]],
+  [["  cloud", C.attr], [": [", C.txt], ['"GCP"', C.str], [", ", C.txt], ['"Firebase"', C.str], [", ", C.txt], ['"Docker"', C.str], ["],", C.txt]],
+  [["  openToWork", C.attr], [": ", C.txt], ["true", C.kw], [",", C.txt]],
+  [["}", C.txt], [";", C.txt]],
   [],
-  [["    stack ", C.attr], ["= [", C.txt], ['"Python"', C.str], [", ", C.txt], ['"Java"', C.str], [", ", C.txt], ['"C"', C.str], [",", C.txt]],
-  [["             ", C.txt], ['"SQL"', C.str], [", ", C.txt], ['"JavaScript"', C.str], [", ", C.txt], ['"ESP32"', C.str], ["]", C.txt]],
-  [],
-  [["    def ", C.kw], ["projects", C.cls], ["(self):", C.txt]],
-  [["        return ", C.kw], ["[", C.txt], ['"IoT Parking"', C.str], [",", C.txt]],
-  [["                ", C.txt], ['"Detective Game"', C.str], [",", C.txt]],
-  [["                ", C.txt], ['"Octacore Store"', C.str], ["]", C.txt]],
+  [["export default ", C.kw], ["henrique", C.cls], [";", C.txt]],
 ];
 const TOTAL_CHARS = CODE.reduce((n, line) => n + line.reduce((m, [t]) => m + t.length, 0) + 1, 0);
 
@@ -64,7 +63,7 @@ const drawScreen = (ctx, chars, cursorOn) => {
   ctx.fillRect(130, 10, 190, 3);
   ctx.font = "500 22px ui-monospace, Menlo, Consolas, monospace";
   ctx.fillStyle = C.txt;
-  ctx.fillText("henrique.py", 155, 40);
+  ctx.fillText("henrique.ts", 155, 40);
 
   // code
   ctx.font = "500 27px ui-monospace, Menlo, Consolas, monospace";
