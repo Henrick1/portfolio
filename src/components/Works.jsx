@@ -8,7 +8,7 @@ import { fadeIn, textVariant } from "../utils/motion";
 
 // Each project is a wide row: screenshot on one side, details on the other,
 // alternating sides on large screens. Projects without public code (no
-// source_code_link) show a "private repo" badge instead of the button.
+// source_code_link) simply have no code button.
 const ProjectRow = ({ index, name, description, tags, image, source_code_link }) => {
   const reversed = index % 2 === 1;
   const Frame = source_code_link ? "a" : "div";
@@ -53,7 +53,7 @@ const ProjectRow = ({ index, name, description, tags, image, source_code_link })
             ))}
           </ul>
 
-          {source_code_link ? (
+          {source_code_link && (
             <a
               href={source_code_link}
               target='_blank'
@@ -63,14 +63,6 @@ const ProjectRow = ({ index, name, description, tags, image, source_code_link })
               <img src={github} alt='' className='w-5 h-5 object-contain' />
               view the code
             </a>
-          ) : (
-            <p className='mt-8 inline-flex items-center gap-2 font-mono text-[14px] text-secondary border border-white/10 rounded-xl py-2.5 px-4'>
-              <svg viewBox='0 0 24 24' className='w-4 h-4' fill='none' stroke='currentColor' strokeWidth='2' aria-hidden='true'>
-                <rect x='5' y='11' width='14' height='9' rx='2' />
-                <path d='M8 11V8a4 4 0 0 1 8 0v3' />
-              </svg>
-              private repo
-            </p>
           )}
         </div>
       </div>
