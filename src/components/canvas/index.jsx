@@ -3,7 +3,7 @@ import useInView from "../../hooks/useInView";
 import SceneBoundary from "./SceneBoundary";
 
 // three.js is split out of the main bundle so the page text paints first.
-const Orb = lazy(() => import("./Orb"));
+const Laptop = lazy(() => import("./Laptop"));
 const Earth = lazy(() => import("./Earth"));
 const Ball = lazy(() => import("./Ball"));
 const Stars = lazy(() => import("./Stars"));
@@ -28,7 +28,7 @@ const deferred = (Scene, className) =>
 const HeroCanvas = () => (
   <SceneBoundary>
     <Suspense fallback={null}>
-      <Orb />
+      <Laptop />
     </Suspense>
   </SceneBoundary>
 );

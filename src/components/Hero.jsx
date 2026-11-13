@@ -38,7 +38,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className='absolute inset-x-0 top-[40%] bottom-[14%] xs:bottom-0 lg:bottom-0 lg:top-[10%] lg:left-[48%]'>
+      <div className='absolute inset-x-0 top-[40%] bottom-[14%] xs:bottom-0 lg:bottom-0 lg:top-[8%] lg:left-[44%]'>
         <HeroCanvas />
       </div>
       <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
