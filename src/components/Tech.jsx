@@ -9,11 +9,11 @@ import { fadeIn, textVariant } from "../utils/motion";
 // Plain image tiles instead of one WebGL canvas per technology: with this many
 // skills the 3D balls would exceed the browser's limit of ~16 WebGL contexts.
 const TechTile = ({ name, icon }) => (
-  <li className='group flex items-center gap-3 rounded-xl border border-white/5 bg-primary/60 px-3 py-2.5 transition-colors hover:border-[#3B82F6]/50'>
-    <span className='grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-white/95 shadow-md shadow-black/30 transition-transform group-hover:-translate-y-0.5'>
-      <img src={icon} alt='' loading='lazy' className='h-6 w-6 object-contain' />
+  <li className='group flex min-w-0 items-center gap-2.5 sm:gap-3 rounded-xl border border-white/5 bg-primary/60 px-2.5 sm:px-3 py-2.5 transition-colors hover:border-[#3B82F6]/50'>
+    <span className='grid h-9 w-9 sm:h-10 sm:w-10 shrink-0 place-items-center rounded-lg bg-white/95 shadow-md shadow-black/30 transition-transform group-hover:-translate-y-0.5'>
+      <img src={icon} alt='' loading='lazy' className='h-5 w-5 sm:h-6 sm:w-6 object-contain' />
     </span>
-    <span className='text-white-100 text-[14px] font-medium'>{name}</span>
+    <span className='min-w-0 text-white-100 text-[13px] sm:text-[14px] font-medium leading-tight'>{name}</span>
   </li>
 );
 
@@ -30,10 +30,10 @@ const Tech = () => {
           <motion.div
             key={group.title}
             variants={fadeIn("up", "spring", i * 0.15, 0.75)}
-            className='bg-tertiary/70 border border-white/5 rounded-2xl p-6'
+            className='bg-tertiary/70 border border-white/5 rounded-2xl p-4 sm:p-6'
           >
             <h3 className='text-white font-semibold text-[18px]'>{group.title}</h3>
-            <ul className='mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 xl:grid-cols-3 gap-3'>
+            <ul className='mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 xl:grid-cols-3 gap-2.5 sm:gap-3'>
               {group.items.map((tech) => (
                 <TechTile key={tech.name} {...tech} />
               ))}
