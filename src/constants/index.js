@@ -81,13 +81,13 @@ import {
         { name: "Flask", icon: flask },
         { name: "Java", icon: java },
         { name: "MySQL", icon: mysql },
+        { name: "Firebase", icon: firebase },
       ],
     },
     {
       title: "cloud & tools",
       items: [
         { name: "Google Cloud", icon: gcp },
-        { name: "Firebase", icon: firebase },
         { name: "Docker", icon: docker },
         { name: "Git", icon: git },
         { name: "Electron", icon: electron },
