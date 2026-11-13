@@ -1,4 +1,4 @@
-import{r as Re,g as Qg}from"./index-4389fc9a.js";/**
+import{r as Re,g as Qg}from"./index-026ba5bb.js";/**
  * @license
  * Copyright 2010-2023 Three.js Authors
  * SPDX-License-Identifier: MIT
