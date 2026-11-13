@@ -27,6 +27,9 @@ import flask from "./tech/flask.webp";
 import electron from "./tech/electron.webp";
 import figma from "./tech/figma.webp";
 import mysql from "./tech/mysql.webp";
+import postgresql from "./tech/postgresql.webp";
+import linux from "./tech/linux.webp";
+import claude from "./tech/claude.webp";
 
 
 import iotpark from "./circuit.webp";
@@ -62,6 +65,9 @@ export {
   electron,
   figma,
   mysql,
+  postgresql,
+  linux,
+  claude,
   iotpark,
   contagotas,
   tabfolio,
