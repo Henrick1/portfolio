@@ -24,8 +24,12 @@ import {
       title: "About",
     },
     {
+      id: "skills",
+      title: "Skills",
+    },
+    {
       id: "work",
-      title: "Work",
+      title: "Projects",
     },
     {
       id: "contact",
@@ -56,49 +60,40 @@ import {
     },
   ];
   
-  const technologies = [    
+  const techGroups = [
     {
-      name: "Python",
-      icon: python,
+      title: "Languages",
+      items: [
+        { name: "Python", icon: python },
+        { name: "Java", icon: java },
+        { name: "C", icon: c },
+        { name: "JavaScript", icon: javascript },
+        { name: "SQL", icon: sql },
+      ],
     },
     {
-      name: "HTML 5",
-      icon: html,
+      title: "Web",
+      items: [
+        { name: "HTML5", icon: html },
+        { name: "CSS3", icon: css },
+        { name: "Three.js", icon: threejs },
+      ],
     },
     {
-      name: "CSS 3",
-      icon: css,
+      title: "Hardware & tools",
+      items: [
+        { name: "MicroPython", icon: micropython },
+        { name: "Git", icon: git },
+      ],
     },
-    {
-      name: "JavaScript",
-      icon: javascript,
-    },
-    
-    {
-      name: "SQL",
-      icon: sql,
-    },
-    {
-      name: "Java",
-      icon: java,
-    },
-    {
-      name: "MicroPython",
-      icon: micropython,
-    },
-    {
-      name: "C",
-      icon: c,
-    },
-    {
-      name: "Three.js",
-      icon: threejs,
-    },
-    {
-      name: "Git",
-      icon: git,
-    },
-    
+  ];
+
+  const profile = [
+    { label: "Education", value: "B.Sc. in Computer Science" },
+    { label: "Location", value: "Brazil" },
+    { label: "Languages", value: "Portuguese (native), English (fluent)" },
+    { label: "Focus", value: "Python back-end, web and IoT" },
+    { label: "Status", value: "Open to developer opportunities" },
   ];
   
   const projects = [
@@ -167,4 +162,4 @@ import {
     },
   ];
   
-  export { services, technologies, projects };
+  export { services, techGroups, profile, projects };
