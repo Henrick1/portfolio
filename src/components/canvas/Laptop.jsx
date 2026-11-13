@@ -5,14 +5,11 @@ import {
   Float,
   Lightformer,
   RoundedBox,
-  useTexture,
 } from "@react-three/drei";
 import * as THREE from "three";
 
-import { python, java, c, sql, javascript, html, css, git, micropython } from "../../assets";
-
-// Hero 3D: a laptop whose screen types out a short Python "about me", with the
-// tools Henrique uses orbiting around it. Built in code: no model download.
+// Hero 3D: a laptop whose screen types out a short Python "about me".
+// Built in code: no model download.
 
 const reducedMotion =
   typeof window !== "undefined" &&
@@ -211,55 +208,11 @@ const Laptop = () => {
   );
 };
 
-// ---------- the stack, orbiting -------------------------------------------
-const ICONS = [python, java, c, sql, javascript, html, css, git, micropython];
-
-const tmpQuat = new THREE.Quaternion();
-
-const Orbit = ({ radius = 2.55 }) => {
-  const group = useRef();
-  const tiles = useRef([]);
-  const textures = useTexture(ICONS);
-
-  useFrame(({ camera }, delta) => {
-    if (!reducedMotion) group.current.rotation.y += delta * 0.18;
-    // keep every tile facing the camera while the ring spins
-    group.current.getWorldQuaternion(tmpQuat).invert().multiply(camera.quaternion);
-    tiles.current.forEach((t) => t && t.quaternion.copy(tmpQuat));
-  });
-
-  return (
-    <group rotation={[0.22, 0, -0.06]} position={[0, -0.1, 0]}>
-      <group ref={group}>
-        {textures.map((tex, i) => {
-          const a = (i / ICONS.length) * Math.PI * 2;
-          return (
-            <group
-              key={i}
-              ref={(el) => (tiles.current[i] = el)}
-              position={[Math.cos(a) * radius, 0, Math.sin(a) * radius]}
-            >
-              <RoundedBox args={[0.52, 0.52, 0.06]} radius={0.1} smoothness={4}>
-                <meshStandardMaterial color="#E2E8F0" metalness={0.1} roughness={0.5} />
-              </RoundedBox>
-              <mesh position={[0, 0, 0.035]}>
-                <planeGeometry args={[0.37, 0.37]} />
-                <meshBasicMaterial map={tex} transparent toneMapped={false} />
-              </mesh>
-            </group>
-          );
-        })}
-      </group>
-    </group>
-  );
-};
-
 const Scene = ({ isMobile }) => (
-  <group scale={isMobile ? 1.0 : 0.95} position={[isMobile ? 0 : -0.25, 0, 0]}>
+  <group scale={isMobile ? 1.15 : 1.25} position={[isMobile ? 0 : -0.1, isMobile ? 0.1 : 0.2, 0]}>
     <Float speed={reducedMotion ? 0 : 1.4} rotationIntensity={0.25} floatIntensity={0.6}>
       <Laptop />
     </Float>
-    <Orbit />
   </group>
 );
 
