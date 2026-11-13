@@ -29,6 +29,7 @@ import {
     postgresql,
     linux,
     claude,
+    githubactions,
   } from "../assets";
   
   export const navLinks = [
@@ -98,6 +99,7 @@ import {
         { name: "Figma", icon: figma },
         { name: "Linux", icon: linux },
         { name: "Claude", icon: claude },
+        { name: "GitHub Actions", icon: githubactions },
       ],
     },
     {

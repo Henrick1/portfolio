@@ -30,6 +30,7 @@ import mysql from "./tech/mysql.webp";
 import postgresql from "./tech/postgresql.webp";
 import linux from "./tech/linux.webp";
 import claude from "./tech/claude.webp";
+import githubactions from "./tech/githubactions.webp";
 
 
 import iotpark from "./circuit.webp";
@@ -68,6 +69,7 @@ export {
   postgresql,
   linux,
   claude,
+  githubactions,
   iotpark,
   contagotas,
   tabfolio,
