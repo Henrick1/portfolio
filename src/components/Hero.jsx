@@ -2,6 +2,14 @@ import { motion } from 'framer-motion';
 
 import { styles } from '../styles';
 import { HeroCanvas } from './canvas';
+import TypingLine from './TypingLine';
+
+const LINES = [
+  'full stack dev',
+  'ships code & breaks prod (sometimes)',
+  'building 3D stuff for fun',
+  'probably playing something rn',
+];
 
 const Hero = () => {
   return (
@@ -16,29 +24,32 @@ const Hero = () => {
 
         <div>
           <h1 className={`${styles.heroHeadText} text-white`}>
-            Hi, I'm <span className='bg-gradient-to-r from-[#3B82F6] to-[#22D3EE] bg-clip-text text-transparent'>Henrique</span>
+            hey, I'm <span className='bg-gradient-to-r from-[#3B82F6] to-[#22D3EE] bg-clip-text text-transparent'>henrick</span>
           </h1>
-          <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            Full Stack Developer <br className='sm:block hidden' />
-            and Computer Scientist.
+          <TypingLine
+            lines={LINES}
+            className='mt-3 font-mono font-medium text-white-100 lg:text-[26px] sm:text-[22px] text-[16px] min-h-[1.6em]'
+          />
+          <p className='mt-2 text-secondary sm:text-[17px] text-[14px]'>
+            B.Sc. in Computer Science · based in Brazil
           </p>
           <div className='sm:mt-8 mt-5 flex flex-wrap sm:gap-4 gap-3 pointer-events-auto'>
             <a
               href='#work'
               className='bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold sm:py-3 sm:px-6 py-2.5 px-4 sm:text-[16px] text-[14px] rounded-xl shadow-lg shadow-[#3B82F6]/30 transition-colors'
             >
-              View my projects
+              see what I built
             </a>
             <a
               href='#contact'
               className='border border-white/30 hover:border-white text-white font-semibold sm:py-3 sm:px-6 py-2.5 px-4 sm:text-[16px] text-[14px] rounded-xl backdrop-blur-sm transition-colors'
             >
-              Contact me
+              say hi
             </a>
           </div>
         </div>
       </div>
-      <div className='absolute inset-x-0 top-[40%] bottom-[14%] xs:bottom-0 lg:bottom-0 lg:top-[8%] lg:left-[44%]'>
+      <div className='absolute inset-x-0 top-[40%] bottom-[14%] xs:bottom-0 lg:bottom-0 lg:top-[12%] lg:left-[50%]'>
         <HeroCanvas />
       </div>
       <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">

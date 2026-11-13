@@ -26,85 +26,80 @@ import {
     firebase,
     docker,
     portfolio,
+    flask,
+    electron,
+    figma,
+    mysql,
   } from "../assets";
   
   export const navLinks = [
-    {
-      id: "about",
-      title: "About",
-    },
-    {
-      id: "skills",
-      title: "Skills",
-    },
-    {
-      id: "work",
-      title: "Projects",
-    },
-    {
-      id: "contact",
-      title: "Contact",
-    },
+    { id: "about", title: "about" },
+    { id: "skills", title: "stack" },
+    { id: "work", title: "projects" },
+    { id: "contact", title: "contact" },
   ];
   
   const services = [
     {
       title: "Front-end",
-      description: "React, Next.js, TypeScript and Tailwind CSS interfaces",
+      description: "pixel-pushing with React, Next.js, TypeScript & Tailwind",
       icon: web,
     },
     {
       title: "Back-end & APIs",
-      description: "Node.js and Express REST APIs, authentication and data modelling",
+      description: "Node.js + Express APIs that (usually) don't break",
       icon: backend,
     },
     {
       title: "Cloud & DevOps",
-      description: "Google Cloud, Firebase and Docker, from build to deploy",
+      description: "Google Cloud, Firebase & Docker: works on my machine AND yours",
       icon: mobile,
     },
     {
       title: "IoT & Hardware",
-      description: "ESP32 and MicroPython projects, plus computer technician skills",
+      description: "ESP32, MicroPython and a screwdriver",
       icon: creator,
     },
   ];
   
   const techGroups = [
     {
-      title: "Front-end",
+      title: "front-end",
       items: [
         { name: "React", icon: react },
         { name: "Next.js", icon: nextjs },
         { name: "TypeScript", icon: typescript },
         { name: "JavaScript", icon: javascript },
-        { name: "Tailwind CSS", icon: tailwind },
+        { name: "Tailwind", icon: tailwind },
         { name: "HTML5", icon: html },
         { name: "CSS3", icon: css },
         { name: "Three.js", icon: threejs },
       ],
     },
     {
-      title: "Back-end",
+      title: "back-end",
       items: [
         { name: "Node.js", icon: nodejs },
         { name: "Express", icon: express },
         { name: "Python", icon: python },
+        { name: "Flask", icon: flask },
         { name: "Java", icon: java },
-        { name: "SQL", icon: sql },
+        { name: "MySQL", icon: mysql },
       ],
     },
     {
-      title: "Cloud & DevOps",
+      title: "cloud & tools",
       items: [
         { name: "Google Cloud", icon: gcp },
         { name: "Firebase", icon: firebase },
         { name: "Docker", icon: docker },
         { name: "Git", icon: git },
+        { name: "Electron", icon: electron },
+        { name: "Figma", icon: figma },
       ],
     },
     {
-      title: "IoT & low-level",
+      title: "iot & low-level",
       items: [
         { name: "MicroPython", icon: micropython },
         { name: "C", icon: c },
@@ -113,11 +108,12 @@ import {
   ];
 
   const profile = [
-    { label: "Education", value: "B.Sc. in Computer Science" },
-    { label: "Location", value: "Brazil" },
-    { label: "Languages", value: "Portuguese (native), English (fluent)" },
-    { label: "Focus", value: "Full stack: React, Next.js, Node.js and Google Cloud" },
-    { label: "Currently", value: "Working as a Full Stack Developer" },
+    { key: "degree", value: '"B.Sc. Computer Science"' },
+    { key: "based_in", value: '"Brazil"' },
+    { key: "rn", value: '"full stack dev @ work"' },
+    { key: "speaks", value: '["pt-BR", "en"]' },
+    { key: "offline", value: '["video games", "puzzles"]' },
+    { key: "vibe", value: '"if it works, don\'t touch it"' },
   ];
   
   const projects = [

@@ -58,7 +58,7 @@ const ProjectRow = ({ index, name, description, tags, image, source_code_link })
             className='mt-8 inline-flex items-center gap-2 bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold py-2.5 px-5 rounded-xl transition-colors'
           >
             <img src={github} alt='' className='w-5 h-5 object-contain' />
-            View source code
+            view the code
           </a>
         </div>
       </div>
@@ -70,16 +70,15 @@ const Works = () => {
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>My projects</p>
-        <h2 className={styles.sectionHeadText}>Projects.</h2>
+        <p className={styles.prompt}>&gt; ls ./projects</p>
+        <h2 className={styles.sectionHeadText}>stuff I've built.</h2>
       </motion.div>
 
       <motion.p
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
-        Web applications from front-end to back-end, plus a few projects in IoT and object-oriented
-        programming. Each one links to its source code on GitHub.
+        some for class, some for fun, all with the source code open. go ahead and peek.
       </motion.p>
 
       <div className='mt-14 flex flex-col gap-10'>

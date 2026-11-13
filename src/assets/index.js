@@ -27,6 +27,10 @@ import gcp from "./tech/gcp.webp";
 import firebase from "./tech/firebase.webp";
 import docker from "./tech/docker.webp";
 import portfolio from "./portfolio.webp";
+import flask from "./tech/flask.webp";
+import electron from "./tech/electron.webp";
+import figma from "./tech/figma.webp";
+import mysql from "./tech/mysql.webp";
 
 
 import iotpark from "./circuit.webp";
@@ -62,6 +66,10 @@ export {
   firebase,
   docker,
   portfolio,
+  flask,
+  electron,
+  figma,
+  mysql,
   iotpark,
   javaprjct,
   computerstore,

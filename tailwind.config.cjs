@@ -18,6 +18,9 @@ module.exports = {
       screens: {
         xs: "450px",
       },
+      fontFamily: {
+        mono: ['"Fira Code"', "ui-monospace", "Menlo", "Consolas", "monospace"],
+      },
     },
   },
   plugins: [],
