@@ -6,6 +6,7 @@ import SceneBoundary from "./SceneBoundary";
 const Laptop = lazy(() => import("./Laptop"));
 const Earth = lazy(() => import("./Earth"));
 const Stars = lazy(() => import("./Stars"));
+const SkillBalls = lazy(() => import("./SkillBalls"));
 
 // Renders the scene only once its container scrolls near the viewport.
 const deferred = (Scene, className) =>
@@ -35,4 +36,15 @@ const HeroCanvas = () => (
 const EarthCanvas = deferred(Earth, "w-full h-full");
 const StarsCanvas = deferred(Stars, "w-full h-auto absolute inset-0 z-[-1]");
 
-export { EarthCanvas, HeroCanvas, StarsCanvas };
+// One shared canvas for every skill ball; only mounted while the Skills
+// section is on screen, so it costs nothing elsewhere on the page.
+const SkillBallsCanvas = ({ items, active }) =>
+  active ? (
+    <SceneBoundary>
+      <Suspense fallback={null}>
+        <SkillBalls items={items} />
+      </Suspense>
+    </SceneBoundary>
+  ) : null;
+
+export { EarthCanvas, HeroCanvas, StarsCanvas, SkillBallsCanvas };
