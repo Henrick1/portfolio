@@ -42,10 +42,10 @@ const ToadModel = ({ hopAt, pointer, facing }) => {
     if (!g) return;
     const t = clock.elapsedTime;
 
-    // turn towards the mouse (and a little towards the scroll direction)
-    const targetY = facing + pointer.current.x * 0.7;
+    // turn towards the mouse; positive y turns the head to the screen right
+    const targetY = Math.max(-1.2, Math.min(0.5, facing + pointer.current.x * 0.8));
     g.rotation.y += (targetY - g.rotation.y) * 0.08;
-    g.rotation.x += (-pointer.current.y * 0.15 - g.rotation.x) * 0.08;
+    g.rotation.x += (pointer.current.y * 0.18 - g.rotation.x) * 0.08;
 
     if (reducedMotion) return;
 

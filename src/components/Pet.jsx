@@ -38,16 +38,18 @@ const SECTIONS = ["hero", "about", "skills", "work", "contact"];
 const DWELL_S = 4; // seconds on a section before commenting
 const COOLDOWN_MS = 14000; // minimum gap between unprompted comments
 const SHOW_MS = 5500;
+// The toad sits in the bottom-right corner, so by default it faces left, into the page.
+const FACING = -0.55;
 
 const Pet = () => {
   const [text, setText] = useState("");
   const [visible, setVisible] = useState(false);
-  const [facing, setFacing] = useState(0);
   const hopAt = useRef(-1e9);
   const pointer = useRef({ x: 0, y: 0 });
   const said = useRef({}); // per-key rotation index
   const lastSpoke = useRef(0);
   const hideTimer = useRef(0);
+  const box = useRef(null);
 
   const say = useCallback((key) => {
     const lines = LINES[key];
@@ -125,11 +127,17 @@ const Pet = () => {
       const d = window.scrollY - lastY;
       lastY = window.scrollY;
       if (Math.abs(d) < 4) return;
-      setFacing(d > 0 ? 0.35 : -0.35);
       if (performance.now() - hopAt.current > 650) hopAt.current = performance.now();
     };
     const onMove = (e) => {
-      pointer.current = { x: (e.clientX / window.innerWidth) * 2 - 1, y: (e.clientY / window.innerHeight) * 2 - 1 };
+      // relative to the toad itself (bottom-right corner), so it looks at the cursor
+      const r = box.current?.getBoundingClientRect();
+      const cx = r ? r.left + r.width / 2 : window.innerWidth;
+      const cy = r ? r.top + r.height / 2 : window.innerHeight;
+      pointer.current = {
+        x: Math.max(-1, Math.min(1, (e.clientX - cx) / (window.innerWidth * 0.6))),
+        y: Math.max(-1, Math.min(1, (e.clientY - cy) / (window.innerHeight * 0.6))),
+      };
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("mousemove", onMove, { passive: true });
@@ -142,7 +150,7 @@ const Pet = () => {
   useEffect(() => () => clearTimeout(hideTimer.current), []);
 
   return (
-    <div className="fixed bottom-2 right-2 sm:bottom-4 sm:right-4 z-40 w-[120px] h-[120px] sm:w-[160px] sm:h-[160px]">
+    <div ref={box} className="fixed bottom-2 right-2 sm:bottom-4 sm:right-4 z-40 w-[120px] h-[120px] sm:w-[160px] sm:h-[160px]">
       <div
         role="status"
         aria-live="polite"
@@ -154,7 +162,7 @@ const Pet = () => {
       </div>
       <SceneBoundary>
         <Suspense fallback={null}>
-          <Toad hopAt={hopAt} pointer={pointer} facing={facing} onClick={() => say("poke")} />
+          <Toad hopAt={hopAt} pointer={pointer} facing={FACING} onClick={() => say("poke")} />
         </Suspense>
       </SceneBoundary>
     </div>
