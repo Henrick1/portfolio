@@ -45,7 +45,7 @@ const ProfileCard = () => (
       {profile.map(({ key, value }, i) => (
         <span key={key}>
           {"  "}
-          <span className='text-[#FFC98A]'>"{key}"</span>
+          <span className='text-[#E4E4E7]'>"{key}"</span>
           <span className='text-white'>: </span>
           <span className='text-[#86EFAC]'>{value}</span>
           <span className='text-white'>{i < profile.length - 1 ? "," : ""}</span>

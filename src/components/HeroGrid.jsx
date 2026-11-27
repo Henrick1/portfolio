@@ -62,9 +62,9 @@ const Embers = () => {
         const flicker = 0.65 + 0.35 * Math.sin(p.life * 9 + p.phase);
         const a = fade * flicker;
         const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
-        g.addColorStop(0, `hsla(${p.hue}, 100%, 70%, ${a})`);
-        g.addColorStop(0.35, `hsla(${p.hue}, 100%, 55%, ${a * 0.5})`);
-        g.addColorStop(1, `hsla(${p.hue}, 100%, 50%, 0)`);
+        g.addColorStop(0, `hsla(${p.hue}, 0%, 70%, ${a})`);
+        g.addColorStop(0.35, `hsla(${p.hue}, 0%, 55%, ${a * 0.5})`);
+        g.addColorStop(1, `hsla(${p.hue}, 0%, 50%, 0)`);
         ctx.fillStyle = g;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2);

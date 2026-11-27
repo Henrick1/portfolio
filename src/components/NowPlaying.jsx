@@ -19,7 +19,7 @@ const NowPlaying = ({ className = "" }) => (
       <span className='np-disc' aria-hidden='true' />
     )}
     <span className='flex flex-col leading-tight'>
-      <span className='font-mono text-[11px] text-[#FF8A3D]'>now playing</span>
+      <span className='font-mono text-[11px] text-[#D4D4D8]'>now playing</span>
       <span className='text-[13px] text-white font-medium'>
         {NOW_PLAYING.title} <span className='text-white-100/60 font-normal'>&middot; {NOW_PLAYING.artist}</span>
       </span>

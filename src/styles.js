@@ -11,7 +11,7 @@ const styles = {
     sectionHeadText:
       "poster-title",
     prompt:
-      "font-mono text-[#FF6B1A] sm:text-[17px] text-[14px]",
+      "font-mono text-[#F4F4F5] sm:text-[17px] text-[14px]",
     sectionSubText:
       "sm:text-[18px] text-[14px] text-secondary uppercase tracking-wider",
   };

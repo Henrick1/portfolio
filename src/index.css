@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* nothing may push the page sideways (the tilted tape is wider than the screen) */
+html,
+body {
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
 /* Poppins by inheritance (not on *), so font-mono can override it */
 body {
   font-family: "Poppins", sans-serif;
@@ -16,7 +23,7 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid #FF6B1A;
+  outline: 2px solid #F4F4F5;
   outline-offset: 3px;
 }
 
@@ -47,19 +54,19 @@ body {
 }
 
 .violet-gradient {
-  background: #FF6B1A;
-  background: linear-gradient(-90deg, #FF6B1A 0%, rgba(60, 25, 5, 0) 100%);
+  background: #F4F4F5;
+  background: linear-gradient(-90deg, #F4F4F5 0%, rgba(60, 25, 5, 0) 100%);
   background: -webkit-linear-gradient(
     -90deg,
-    #FF6B1A 0%,
+    #F4F4F5 0%,
     rgba(60, 25, 5, 0) 100%
   );
 }
 
 .green-pink-gradient {
-  background: "#FFB347";
-  background: linear-gradient(90.13deg, #FFB347 1.9%, #FF6B1A 97.5%);
-  background: -webkit-linear-gradient(-90.13deg, #FFB347 1.9%, #FF6B1A 97.5%);
+  background: "#FFFFFF";
+  background: linear-gradient(90.13deg, #FFFFFF 1.9%, #F4F4F5 97.5%);
+  background: -webkit-linear-gradient(-90.13deg, #FFFFFF 1.9%, #F4F4F5 97.5%);
 }
 
 .orange-text-gradient {
@@ -113,8 +120,8 @@ body {
 
 .pink-text-gradient {
   /* was pink; now a sky -> indigo blue to match the blue theme */
-  background: #FFB347;
-  background: linear-gradient(to top, #FF6B1A, #FFB347);
+  background: #FFFFFF;
+  background: linear-gradient(to top, #F4F4F5, #FFFFFF);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -233,9 +240,9 @@ body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 30% at 50% 100%, rgba(255, 110, 30, 0.55), transparent 72%),
-    radial-gradient(ellipse 30% 18% at 50% 96%, rgba(255, 190, 110, 0.45), transparent 70%),
-    radial-gradient(ellipse 25% 30% at 0% 90%, rgba(255, 107, 26, 0.3), transparent 75%);
+    radial-gradient(ellipse 60% 30% at 50% 100%, rgba(200, 215, 245, 0.22), transparent 72%),
+    radial-gradient(ellipse 30% 18% at 50% 96%, rgba(230, 236, 250, 0.16), transparent 70%),
+    radial-gradient(ellipse 25% 30% at 0% 90%, rgba(255, 255, 255, 0.3), transparent 75%);
   mix-blend-mode: screen;
   animation: fire-flicker 3.2s ease-in-out infinite;
 }
@@ -296,10 +303,10 @@ body::after {
 .pet-bubble {
   background: #121822;
   color: #F1E4D6;
-  border: 1px solid rgba(255, 107, 26, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 14px 14px 4px 14px;
   padding: 10px 14px;
-  box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.8), 0 0 0 3px rgba(255, 107, 26, 0.12);
+  box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.8), 0 0 0 3px rgba(255, 255, 255, 0.12);
 }
 
 
@@ -312,7 +319,7 @@ body::after {
   letter-spacing: 0.01em;
   color: #EEE7DA;
   background:
-    linear-gradient(180deg, #F4EEE3 0%, #E9DFD0 55%, #FFB37A 100%);
+    linear-gradient(180deg, #FFFFFF 0%, #F4F4F5 55%, #C9CDD6 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -329,7 +336,7 @@ body::after {
   background:
     radial-gradient(circle, #0E131B 0 5px, transparent 6px),
     repeating-radial-gradient(circle, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 3px),
-    conic-gradient(from 0deg, #1b2335, #FF6B1A, #FFB347, #1b2335, #3B5B8F, #1b2335);
+    conic-gradient(from 0deg, #1b2335, #F4F4F5, #FFFFFF, #1b2335, #3B5B8F, #1b2335);
   animation: np-spin 3.2s linear infinite;
 }
 
@@ -344,7 +351,7 @@ body::after {
   width: 3px;
   height: 100%;
   border-radius: 2px;
-  background: #FF6B1A;
+  background: #F4F4F5;
   transform-origin: bottom;
   animation: np-bar 1s ease-in-out infinite;
 }
@@ -382,7 +389,7 @@ body::after {
   font-size: clamp(64px, 11vw, 168px);
   line-height: 0.86;
   letter-spacing: 0.005em;
-  background: linear-gradient(180deg, #F4EEE3 0%, #E9DFD0 60%, #FFB37A 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F4F4F5 60%, #C9CDD6 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -397,7 +404,7 @@ body::after {
 }
 
 .panel:hover {
-  border-color: rgba(255, 107, 26, 0.6);
+  border-color: rgba(255, 255, 255, 0.6);
 }
 
 /* storm haze behind every section */
@@ -405,7 +412,7 @@ body::after {
   background:
     radial-gradient(ellipse 70% 30% at 85% 8%, rgba(52, 80, 132, 0.35), transparent 70%),
     radial-gradient(ellipse 60% 25% at 10% 38%, rgba(52, 80, 132, 0.22), transparent 70%),
-    radial-gradient(ellipse 70% 25% at 90% 62%, rgba(255, 107, 26, 0.08), transparent 70%),
+    radial-gradient(ellipse 70% 25% at 90% 62%, rgba(255, 255, 255, 0.08), transparent 70%),
     radial-gradient(ellipse 80% 30% at 20% 92%, rgba(52, 80, 132, 0.25), transparent 70%),
     #090C12;
 }
@@ -416,8 +423,8 @@ body::after {
   z-index: 20;
   margin: -28px -2% 0;
   transform: rotate(-2deg);
-  background: #FF6B1A;
-  color: #140A04;
+  background: #F4F4F5;
+  color: #0B0E14;
   overflow: hidden;
   white-space: nowrap;
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);

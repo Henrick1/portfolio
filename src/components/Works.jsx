@@ -60,9 +60,9 @@ const ProjectRow = ({ index, name, description, tags, image, source_code_link })
               href={source_code_link}
               target='_blank'
               rel='noreferrer'
-              className='mt-8 inline-flex items-center gap-2 bg-[#FF6B1A] hover:bg-[#FF8A3D] text-[#140a04] font-bold py-2.5 px-5 rounded-md transition-colors'
+              className='mt-8 inline-flex items-center gap-2 bg-[#F4F4F5] hover:bg-[#D4D4D8] text-[#0B0E14] font-bold py-2.5 px-5 rounded-md transition-colors'
             >
-              <img src={github} alt='' className='w-5 h-5 object-contain' />
+              <img src={github} alt='' className='w-5 h-5 object-contain invert' />
               view the code
             </a>
           )}

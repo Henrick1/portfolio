@@ -19,9 +19,9 @@ const reducedMotion =
 // ---------- screen: syntax-highlighted code drawn on a canvas -------------
 const C = {
   kw: "#C084FC", // keywords
-  cls: "#FFB347", // class names
+  cls: "#FFFFFF", // class names
   str: "#86EFAC", // strings
-  attr: "#FFC98A", // attributes
+  attr: "#E4E4E7", // attributes
   txt: "#E2E8F0",
   dim: "#475569",
 };
@@ -59,7 +59,7 @@ const drawScreen = (ctx, chars, cursorOn) => {
   });
   ctx.fillStyle = "#0F141C";
   ctx.fillRect(130, 10, 190, 44);
-  ctx.fillStyle = "#FF6B1A";
+  ctx.fillStyle = "#F4F4F5";
   ctx.fillRect(130, 10, 190, 3);
   ctx.font = "500 22px ui-monospace, Menlo, Consolas, monospace";
   ctx.fillStyle = C.txt;
@@ -91,7 +91,7 @@ const drawScreen = (ctx, chars, cursorOn) => {
   });
 
   if (cursorOn && cursor) {
-    ctx.fillStyle = "#FF6B1A";
+    ctx.fillStyle = "#F4F4F5";
     ctx.fillRect(cursor[0] + 2, cursor[1] - 26, 13, 32);
   }
 };
@@ -158,7 +158,7 @@ const useKeyboardTexture = () =>
       for (let k = 0; k < n; k++) {
         ctx.fillStyle = "#1C2330";
         ctx.fillRect(offset + k * keyW + 4, 14 + r * 78, keyW - 8, 66);
-        ctx.fillStyle = "rgba(255,107,26,0.55)";
+        ctx.fillStyle = "rgba(255, 255, 255,0.55)";
         ctx.fillRect(offset + k * keyW + 4, 14 + r * 78 + 62, keyW - 8, 4);
       }
     });
@@ -219,7 +219,7 @@ const Laptop = () => {
           <meshBasicMaterial map={screen} toneMapped={false} />
         </mesh>
         {/* soft blue light spilling from the screen */}
-        <pointLight position={[0, 1.1, 1.2]} intensity={1.2} distance={4} color="#FF6B1A" />
+        <pointLight position={[0, 1.1, 1.2]} intensity={1.2} distance={4} color="#F4F4F5" />
       </group>
     </group>
   );
@@ -241,11 +241,11 @@ const LaptopCanvas = () => {
     <Canvas dpr={[1, 1.5]} camera={{ position: [0, 1.4, 8], fov: 42 }}>
       <ambientLight intensity={0.35} />
       <directionalLight position={[3, 5, 4]} intensity={1} />
-      <pointLight position={[-5, 2, 3]} intensity={1} color="#FFB347" />
+      <pointLight position={[-5, 2, 3]} intensity={1} color="#FFFFFF" />
       {/* Reflections from in-scene light panels: no HDR file to download */}
       <Environment resolution={128}>
-        <Lightformer form="rect" intensity={3} color="#FF6B1A" position={[-4, 2, 4]} scale={[4, 3, 1]} target={[0, 0, 0]} />
-        <Lightformer form="rect" intensity={2.5} color="#FFB347" position={[4, 3, 3]} scale={[3, 2, 1]} target={[0, 0, 0]} />
+        <Lightformer form="rect" intensity={3} color="#F4F4F5" position={[-4, 2, 4]} scale={[4, 3, 1]} target={[0, 0, 0]} />
+        <Lightformer form="rect" intensity={2.5} color="#FFFFFF" position={[4, 3, 3]} scale={[3, 2, 1]} target={[0, 0, 0]} />
         <Lightformer form="rect" intensity={1.5} color="#ffffff" position={[0, 6, -2]} scale={[6, 1, 1]} target={[0, 0, 0]} />
       </Environment>
       <Scene isMobile={isMobile} />

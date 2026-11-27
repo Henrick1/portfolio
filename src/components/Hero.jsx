@@ -47,7 +47,7 @@ const Hero = () => {
         <div className='flex flex-wrap gap-3'>
           <a
             href='#work'
-            className='bg-[#FF6B1A] hover:bg-[#FF8A3D] text-[#140a04] font-bold py-3 px-6 sm:text-[16px] text-[14px] rounded-md transition-colors'
+            className='bg-[#F4F4F5] hover:bg-[#D4D4D8] text-[#0B0E14] font-bold py-3 px-6 sm:text-[16px] text-[14px] rounded-md transition-colors'
           >
             see what I built
           </a>

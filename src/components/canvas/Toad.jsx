@@ -62,7 +62,7 @@ const Toad = ({ hopAt, pointer, facing = 0, onClick }) => (
     <ambientLight intensity={0.5} color="#9FB0D0" />
     {/* cold storm key light + warm fire rim from behind */}
     <directionalLight position={[2, 3, 4]} intensity={1.4} color="#C9D6F0" />
-    <pointLight position={[-2.5, 1, -2]} intensity={8} distance={8} color="#FF7A1A" />
+    <pointLight position={[-2.5, 1, -2]} intensity={8} distance={8} color="#E8ECF4" />
     <ToadModel hopAt={hopAt} pointer={pointer} facing={facing} />
   </Canvas>
 );
