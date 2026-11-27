@@ -1,4 +1,5 @@
 import { useMemo, useRef, Suspense } from 'react';
+import { DPR, FrameLimiter } from "./perf";
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial, Preload } from '@react-three/drei';
 import * as random from 'maath/random/dist/maath-random.esm';
@@ -33,11 +34,11 @@ const StarsCanvas = () => {
     <div
       className="w-full h-auto absolute inset-0 z-[-1]"
     >
-      <Canvas camera={{position: [0,0,1]}}>
+      <Canvas frameloop="demand" dpr={DPR} camera={{ position: [0, 0, 1] }}>
         <Suspense fallback={null}>
           <Stars/>
         </Suspense>
-        <Preload all/>
+        <FrameLimiter fps={30} />
       </Canvas>
     </div>
   )

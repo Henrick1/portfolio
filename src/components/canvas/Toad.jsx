@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { DPR, FrameLimiter } from "./perf";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useToadModel } from "./toadModel";
 
@@ -52,9 +53,10 @@ const ToadModel = ({ hopAt, pointer, facing }) => {
   );
 };
 
-const Toad = ({ hopAt, pointer, facing = 0, onClick }) => (
+const Toad = ({ hopAt, pointer, facing = 0, onClick, active = true }) => (
   <Canvas
-    dpr={[1, 1.5]}
+    frameloop="demand"
+    dpr={DPR}
     camera={{ position: [0, 0.6, 4.2], fov: 38 }}
     onClick={onClick}
     style={{ cursor: "pointer" }}
@@ -64,6 +66,7 @@ const Toad = ({ hopAt, pointer, facing = 0, onClick }) => (
     <directionalLight position={[2, 3, 4]} intensity={1.4} color="#C9D6F0" />
     <pointLight position={[-2.5, 1, -2]} intensity={8} distance={8} color="#E8ECF4" />
     <ToadModel hopAt={hopAt} pointer={pointer} facing={facing} />
+    <FrameLimiter active={active} />
   </Canvas>
 );
 

@@ -10,7 +10,7 @@ export const NOW_PLAYING = {
 
 const NowPlaying = ({ className = "" }) => (
   <div
-    className={`now-playing inline-flex items-center gap-3 rounded-xl border border-white/10 bg-[#0E131B]/85 backdrop-blur-md py-2 pl-2 pr-4 ${className}`}
+    className={`now-playing inline-flex items-center gap-3 rounded-xl border border-white/10 bg-[#0E131B]/95 py-2 pl-2 pr-4 ${className}`}
     aria-label={`Now playing: ${NOW_PLAYING.title} by ${NOW_PLAYING.artist}`}
   >
     {NOW_PLAYING.cover ? (

@@ -1,4 +1,5 @@
 import { Canvas } from "@react-three/fiber";
+import { DPR, FrameLimiter } from "./perf";
 import { Decal, Float, View, useTexture } from "@react-three/drei";
 
 // All skill balls share ONE WebGL canvas: each <View> draws its ball inside the
@@ -23,7 +24,8 @@ const Ball = ({ icon }) => {
 
 const SkillBalls = ({ items }) => (
   <Canvas
-    dpr={[1, 1.5]}
+    frameloop="demand"
+    dpr={DPR}
     style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex: 10 }}
   >
     {items.map(({ icon, track }, i) => (
@@ -31,6 +33,7 @@ const SkillBalls = ({ items }) => (
         <Ball icon={icon} />
       </View>
     ))}
+    <FrameLimiter />
   </Canvas>
 );
 

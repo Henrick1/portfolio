@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef } from "react";
+import { DPR, FrameLimiter } from "./perf";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
   Environment,
@@ -238,7 +239,7 @@ const LaptopCanvas = () => {
     typeof window !== "undefined" && window.matchMedia("(max-width: 640px)").matches;
 
   return (
-    <Canvas dpr={[1, 1.5]} camera={{ position: [0, 1.4, 8], fov: 42 }}>
+    <Canvas frameloop="demand" dpr={DPR} camera={{ position: [0, 1.4, 8], fov: 42 }}>
       <ambientLight intensity={0.35} />
       <directionalLight position={[3, 5, 4]} intensity={1} />
       <pointLight position={[-5, 2, 3]} intensity={1} color="#FFFFFF" />
@@ -249,6 +250,7 @@ const LaptopCanvas = () => {
         <Lightformer form="rect" intensity={1.5} color="#ffffff" position={[0, 6, -2]} scale={[6, 1, 1]} target={[0, 0, 0]} />
       </Environment>
       <Scene isMobile={isMobile} />
+      <FrameLimiter />
     </Canvas>
   );
 };

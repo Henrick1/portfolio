@@ -307,7 +307,7 @@ const Pet = () => {
       </div>
       <SceneBoundary>
         <Suspense fallback={null}>
-          <Toad hopAt={hopAt} pointer={pointer} facing={FACING} onClick={() => say("poke")} />
+          <Toad hopAt={hopAt} pointer={pointer} facing={FACING} active={out} onClick={() => say("poke")} />
         </Suspense>
       </SceneBoundary>
     </div>

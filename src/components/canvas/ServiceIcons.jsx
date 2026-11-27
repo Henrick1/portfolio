@@ -1,4 +1,5 @@
 import { useMemo, useRef } from "react";
+import { DPR, FrameLimiter } from "./perf";
 import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment, Float, Lightformer, View } from "@react-three/drei";
@@ -173,7 +174,8 @@ const Spinner = ({ shape }) => {
 
 const ServiceIcons = ({ items }) => (
   <Canvas
-    dpr={[1, 2]}
+    frameloop="demand"
+    dpr={DPR}
     camera={{ position: [0, 0, 5], fov: 45 }}
     style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex: 10 }}
   >
@@ -182,6 +184,7 @@ const ServiceIcons = ({ items }) => (
         <Spinner shape={shape} />
       </View>
     ))}
+    <FrameLimiter />
   </Canvas>
 );
 

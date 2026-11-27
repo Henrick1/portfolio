@@ -4,7 +4,25 @@ import { useEffect, useRef } from "react";
 // embers drifting up (2D canvas, additive blending) and the odd lightning
 // flash. Sky, smoke, glow and flash are CSS (see .storm-* in index.css).
 
-const COUNT = 140;
+import { LITE } from "./canvas/perf";
+
+const COUNT = LITE ? 50 : 90;
+const FRAME_MS = 1000 / (LITE ? 30 : 60);
+
+// One soft glow drawn once and stamped for every ember (instead of building a
+// new radial gradient per ember per frame).
+const makeSprite = () => {
+  const c = document.createElement("canvas");
+  c.width = c.height = 64;
+  const g = c.getContext("2d");
+  const r = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+  r.addColorStop(0, "rgba(255,255,255,1)");
+  r.addColorStop(0.35, "rgba(235,240,250,0.5)");
+  r.addColorStop(1, "rgba(235,240,250,0)");
+  g.fillStyle = r;
+  g.fillRect(0, 0, 64, 64);
+  return c;
+};
 
 const spawn = (w, h, dpr, initial) => {
   // most embers start near the fire on the left
@@ -36,9 +54,10 @@ const Embers = () => {
     let dpr = 1;
     let parts = [];
     let last = performance.now();
+    const sprite = makeSprite();
 
     const resize = () => {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      dpr = 1; // soft particles: native resolution is plenty
       const r = canvas.getBoundingClientRect();
       w = canvas.width = Math.round(r.width * dpr);
       h = canvas.height = Math.round(r.height * dpr);
@@ -60,24 +79,20 @@ const Embers = () => {
         }
         const fade = Math.min(1, p.life / 0.6) * Math.max(0, 1 - p.life / p.max);
         const flicker = 0.65 + 0.35 * Math.sin(p.life * 9 + p.phase);
-        const a = fade * flicker;
-        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
-        g.addColorStop(0, `hsla(${p.hue}, 0%, 70%, ${a})`);
-        g.addColorStop(0.35, `hsla(${p.hue}, 0%, 55%, ${a * 0.5})`);
-        g.addColorStop(1, `hsla(${p.hue}, 0%, 50%, 0)`);
-        ctx.fillStyle = g;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2);
-        ctx.fill();
+        const size = p.r * 8;
+        ctx.globalAlpha = fade * flicker * 0.85;
+        ctx.drawImage(sprite, p.x - size / 2, p.y - size / 2, size, size);
       }
+      ctx.globalAlpha = 1;
       ctx.globalCompositeOperation = "source-over";
     };
 
     const frame = (now) => {
+      raf = requestAnimationFrame(frame);
+      if (now - last < FRAME_MS - 1) return; // cap fps on high refresh screens
       const dt = Math.min(0.05, (now - last) / 1000);
       last = now;
       draw(dt);
-      raf = requestAnimationFrame(frame);
     };
     const play = () => {
       if (!reduced && visible && !document.hidden && !raf) {

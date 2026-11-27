@@ -1,4 +1,5 @@
 import { Suspense } from 'react'
+import { DPR, FrameLimiter } from "./perf";
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Preload, useGLTF } from '@react-three/drei';
 
@@ -19,9 +20,8 @@ const Earth = () => {
 const EarthCanvas = () => {
   return (
     <Canvas
-      shadows
       frameloop='demand'
-      gl={{ preserveDrawingBuffer: true }}
+      dpr={DPR}
       camera={{
         fov: 45,
         near: 0.1,
@@ -38,6 +38,7 @@ const EarthCanvas = () => {
         />
         <Earth/>
       </Suspense>
+      <FrameLimiter fps={30} />
     </Canvas>
   )
 }
