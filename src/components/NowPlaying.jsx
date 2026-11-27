@@ -1,11 +1,11 @@
-import mantraDisc from "../assets/mantra-disc.webp";
+import mantraCover from "../assets/mantra-cover.webp";
 
-// "Now playing" chip on the hero: a spinning disc, the track and a small
+// "Now playing" chip on the hero: the album cover, the track and a small
 // equalizer. Edit NOW_PLAYING to change the song shown.
 export const NOW_PLAYING = {
   title: "MANTRA",
   artist: "Bring Me The Horizon",
-  cover: mantraDisc, // the CD from the album art, spinning
+  cover: mantraCover, // album art, shown as a still square
 };
 
 const NowPlaying = ({ className = "" }) => (
@@ -14,7 +14,7 @@ const NowPlaying = ({ className = "" }) => (
     aria-label={`Now playing: ${NOW_PLAYING.title} by ${NOW_PLAYING.artist}`}
   >
     {NOW_PLAYING.cover ? (
-      <img src={NOW_PLAYING.cover} alt='' className='np-disc np-cover' />
+      <img src={NOW_PLAYING.cover} alt='' className='np-cover' />
     ) : (
       <span className='np-disc' aria-hidden='true' />
     )}

@@ -354,8 +354,12 @@ body::after {
 .np-eq i:nth-child(4) { animation-delay: -0.2s; }
 
 .np-cover {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 4px;
   object-fit: cover;
-  background: none;
+  box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.8);
 }
 
 @keyframes np-spin {
