@@ -10,8 +10,8 @@ const LINES = [
 ];
 
 // Poster-style hero: the name runs huge across the screen, the 3D laptop (with
-// the toad sitting on it) stands in front of the letters, and the intro plus
-// the two actions sit clearly underneath.
+// the frog sitting on it) stands in front of the letters, and the intro sits
+// underneath.
 const Hero = () => {
   return (
     <section className='relative z-10 w-full min-h-[100svh] overflow-hidden flex flex-col'>
@@ -33,7 +33,7 @@ const Hero = () => {
         <HeroCanvas />
       </div>
 
-      <div className='relative z-20 mt-auto pb-10 sm:pb-12 px-6 sm:px-16 max-w-[1400px] w-full mx-auto flex flex-col lg:flex-row lg:items-end justify-between gap-5 lg:gap-6'>
+      <div className='relative z-20 mt-auto pb-10 sm:pb-12 px-6 sm:px-16 max-w-[1400px] w-full mx-auto flex flex-col gap-5'>
         <div>
           <TypingLine
             lines={LINES}
@@ -43,20 +43,6 @@ const Hero = () => {
             I build web apps end to end with React, Next.js, Node.js and Google Cloud.
           </p>
           <NowPlaying className='mt-4' />
-        </div>
-        <div className='flex flex-wrap gap-3'>
-          <a
-            href='#work'
-            className='bg-[#F4F4F5] hover:bg-[#D4D4D8] text-[#0B0E14] font-bold py-3 px-6 sm:text-[16px] text-[14px] rounded-md transition-colors'
-          >
-            see what I built
-          </a>
-          <a
-            href='#contact'
-            className='border-2 border-white/80 hover:bg-white hover:text-[#0b0e14] text-white font-bold py-3 px-6 sm:text-[16px] text-[14px] rounded-md transition-colors'
-          >
-            say hi
-          </a>
         </div>
       </div>
     </section>
