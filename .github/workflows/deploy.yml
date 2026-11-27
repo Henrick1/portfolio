@@ -25,7 +25,15 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      # Deploy commits carry no time of day: today's date at 00:00 UTC.
+      - run: |
+          echo "GIT_AUTHOR_DATE=$(date -u +%Y-%m-%dT00:00:00+0000)" >> "$GITHUB_ENV"
+          echo "GIT_COMMITTER_DATE=$(date -u +%Y-%m-%dT00:00:00+0000)" >> "$GITHUB_ENV"
       - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          user_name: Henrick_0
+          user_email: 107651823+Henrick1@users.noreply.github.com
+          # keep a single commit on gh-pages instead of a history of deploys
+          force_orphan: true
