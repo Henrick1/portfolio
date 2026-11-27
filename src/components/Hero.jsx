@@ -1,5 +1,6 @@
 import { HeroCanvas } from './canvas';
 import TypingLine from './TypingLine';
+import NowPlaying from './NowPlaying';
 
 const LINES = [
   'full stack dev',
@@ -32,7 +33,7 @@ const Hero = () => {
         <HeroCanvas />
       </div>
 
-      <div className='relative z-20 mt-auto pb-10 sm:pb-12 px-6 sm:px-16 max-w-[1400px] w-full mx-auto flex flex-col sm:flex-row sm:items-end justify-between gap-6'>
+      <div className='relative z-20 mt-auto pb-10 sm:pb-12 px-6 sm:px-16 max-w-[1400px] w-full mx-auto flex flex-col lg:flex-row lg:items-end justify-between gap-5 lg:gap-6'>
         <div>
           <TypingLine
             lines={LINES}
@@ -42,6 +43,7 @@ const Hero = () => {
             I build web apps end to end with React, Next.js, Node.js and Google Cloud.
           </p>
         </div>
+        <NowPlaying className='self-start sm:self-auto lg:mb-1' />
         <div className='flex flex-wrap gap-3'>
           <a
             href='#work'

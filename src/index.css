@@ -319,3 +319,49 @@ body::after {
   text-shadow: none;
   filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.45));
 }
+
+/* "Now playing" chip on the hero */
+.np-disc {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  flex: none;
+  background:
+    radial-gradient(circle, #0E131B 0 5px, transparent 6px),
+    repeating-radial-gradient(circle, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 3px),
+    conic-gradient(from 0deg, #1b2335, #FF6B1A, #FFB347, #1b2335, #3B5B8F, #1b2335);
+  animation: np-spin 3.2s linear infinite;
+}
+
+.np-eq {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 16px;
+}
+
+.np-eq i {
+  width: 3px;
+  height: 100%;
+  border-radius: 2px;
+  background: #FF6B1A;
+  transform-origin: bottom;
+  animation: np-bar 1s ease-in-out infinite;
+}
+
+.np-eq i:nth-child(2) { animation-delay: -0.4s; }
+.np-eq i:nth-child(3) { animation-delay: -0.7s; }
+.np-eq i:nth-child(4) { animation-delay: -0.2s; }
+
+@keyframes np-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes np-bar {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .np-disc, .np-eq i { animation: none; }
+}
