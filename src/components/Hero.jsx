@@ -42,8 +42,8 @@ const Hero = () => {
           <p className='mt-2 max-w-[44ch] text-white-100/80 sm:text-[17px] text-[14px] leading-relaxed'>
             I build web apps end to end with React, Next.js, Node.js and Google Cloud.
           </p>
+          <NowPlaying className='mt-4' />
         </div>
-        <NowPlaying className='self-start sm:self-auto lg:mb-1' />
         <div className='flex flex-wrap gap-3'>
           <a
             href='#work'
