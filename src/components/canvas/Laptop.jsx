@@ -176,7 +176,7 @@ const SittingToad = (props) => {
   const ref = useRef();
   useFrame(({ clock, pointer }) => {
     if (reducedMotion) return;
-    ref.current.rotation.y += (-0.5 + pointer.x * 0.5 - ref.current.rotation.y) * 0.06;
+    ref.current.rotation.y += (-0.18 + pointer.x * 0.35 - ref.current.rotation.y) * 0.06;
     ref.current.scale.y = 1 + Math.sin(clock.elapsedTime * 2.2) * 0.02;
   });
   return (

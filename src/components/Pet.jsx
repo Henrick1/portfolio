@@ -94,7 +94,7 @@ const COOLDOWN_MS = 14000; // minimum gap between unprompted comments
 const SHOW_MS = 5500;
 const IDLE_MS = 45000; // say something random after this long without talking
 // The toad sits in the bottom-right corner, so by default it faces left, into the page.
-const FACING = -0.55;
+const FACING = -0.22;
 
 const Pet = () => {
   const [text, setText] = useState("");
