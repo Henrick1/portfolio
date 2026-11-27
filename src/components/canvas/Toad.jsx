@@ -15,7 +15,7 @@ const HOP_MS = 520;
 const ToadModel = ({ hopAt, pointer, facing }) => {
   const body = useRef();
 
-  const model = useToadModel(1.7);
+  const model = useToadModel(1.45);
 
   useFrame(({ clock }) => {
     const g = body.current;
@@ -44,8 +44,10 @@ const ToadModel = ({ hopAt, pointer, facing }) => {
   });
 
   return (
-    <group ref={body} position-y={-0.85}>
-      <primitive object={model} />
+    <group position-y={-0.8}>
+      <group ref={body}>
+        <primitive object={model} />
+      </group>
     </group>
   );
 };

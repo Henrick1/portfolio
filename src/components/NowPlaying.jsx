@@ -1,9 +1,11 @@
+import mantraDisc from "../assets/mantra-disc.webp";
+
 // "Now playing" chip on the hero: a spinning disc, the track and a small
 // equalizer. Edit NOW_PLAYING to change the song shown.
 export const NOW_PLAYING = {
   title: "MANTRA",
   artist: "Bring Me The Horizon",
-  cover: null, // set to an imported image to spin the album art instead of the generic disc
+  cover: mantraDisc, // the CD from the album art, spinning
 };
 
 const NowPlaying = ({ className = "" }) => (

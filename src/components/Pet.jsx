@@ -3,21 +3,37 @@ import SceneBoundary from "./canvas/SceneBoundary";
 
 const Toad = lazy(() => import("./canvas/Toad"));
 
-// What the toad says about each part of the page. It comments on whatever
-// the visitor has been looking at for a few seconds, and on a project card
-// when the mouse rests on it (cards dispatch a "pet:look" event).
+// What the frog says. A line is either a string or a "bit": a list of steps
+// the bubble plays in order. A step is text, plus optionally `scramble` (that
+// many ms of random characters standing in for a value being "looked up") and
+// `wait` (ms to hold it). Nothing is ever really looked up: it is all a joke.
+const rnd = (n) => Math.floor(Math.random() * n);
+const fakeIp = () => `${rnd(200) + 10}.${rnd(256)}.${rnd(256)}.${rnd(254) + 1}`;
+
 const LINES = {
   hero: [
     "I jumped off the laptop to follow you. scroll on.",
-    "that laptop never stops typing. I tried unplugging it.",
+    [
+      { text: "scanning visitor...", wait: 900 },
+      { text: "locating your IP: ", scramble: 1800, value: "---.---.---.---" },
+      { text: "just kidding. I'm a frog. I can't even use a mouse." },
+    ],
   ],
   about: [
     "full stack dev, B.Sc. in Computer Science. I just sit here and croak.",
-    "he says 'if it works, don't touch it'. I live by that.",
+    "he says 'if it works, don't touch it'. I live by that. I haven't moved in 3 days.",
+    [
+      { text: "reading your mind...", wait: 1200 },
+      { text: "you're thinking 'why is there a frog'. correct." },
+    ],
   ],
   skills: [
-    "19 tools. I only know one move: jump.",
+    "26 tools. I only know one move: jump.",
     "you can spin those balls. go on, nobody's watching.",
+    [
+      { text: "calculating your skill level: ", scramble: 1600, digits: 2, suffix: "%" },
+      { text: "ok that number was random. you seem great though." },
+    ],
   ],
   work: [
     "every project here has a story. the finance one has the best plot twist.",
@@ -26,18 +42,57 @@ const LINES = {
   contact: [
     "go on, say hi. he answers. I just ribbit.",
     "send a message. no spam, I eat flies, not spam.",
+    [
+      { text: "estimating your reply time: ", scramble: 1400, digits: 2, suffix: " min" },
+      { text: "too slow. I already wrote the email myself. it just says ribbit." },
+    ],
   ],
-  "project:Conta-Gotas": ["his own finance app. it counts every drop of money, hence the name."],
+  idle: [
+    [
+      { text: "checking if you're still there", wait: 500 },
+      { text: "checking if you're still there.", wait: 500 },
+      { text: "checking if you're still there..", wait: 500 },
+      { text: "checking if you're still there...", wait: 700 },
+      { text: "oh hi. I was totally not asleep." },
+    ],
+    [
+      { text: "downloading more RAM: ", scramble: 1600, digits: 3, suffix: "%" },
+      { text: "done. you now have 0.5 frogs of memory." },
+    ],
+  ],
+  "project:Conta-Gotas": [
+    "his own finance app. it counts every drop of money, hence the name.",
+    [
+      { text: "checking your bank balance: R$ ", scramble: 1600, digits: 5 },
+      { text: "relax. I don't have Open Finance access. yet." },
+    ],
+  ],
   "project:IoT Parking": ["sensors that find free parking spots. I just hop over the cars."],
-  "project:Tabfolio": ["a browser extension for tab hoarders. he has 40 tabs open right now."],
+  "project:Tabfolio": [
+    [
+      { text: "counting your open tabs: ", scramble: 1500, digits: 2 },
+      { text: "that many? you need Tabfolio. he built it for people like you." },
+    ],
+  ],
   "project:3D Developer Portfolio": ["you're inside this one. I'm the side quest."],
-  poke: ["ribbit.", "careful, I bite. no I don't.", "achievement unlocked: poked the toad.", "this site runs on React and stubbornness."],
+  poke: [
+    "ribbit.",
+    "careful, I bite. no I don't.",
+    "achievement unlocked: poked the frog.",
+    "this site runs on React and stubbornness.",
+    [
+      { text: "hacking the mainframe", wait: 700 },
+      { text: "hacking the mainframe: ", scramble: 1500, value: "0x--------" },
+      { text: "access denied. I pressed the wrong key. I don't have fingers." },
+    ],
+  ],
 };
 
 const SECTIONS = ["hero", "about", "skills", "work", "contact"];
 const DWELL_S = 4; // seconds on a section before commenting
 const COOLDOWN_MS = 14000; // minimum gap between unprompted comments
 const SHOW_MS = 5500;
+const IDLE_MS = 45000; // say something random after this long without talking
 // The toad sits in the bottom-right corner, so by default it faces left, into the page.
 const FACING = -0.55;
 
@@ -52,17 +107,55 @@ const Pet = () => {
   const box = useRef(null);
   const [out, setOut] = useState(false); // false while the hero (where the toad sits on the laptop) is visible
 
-  const say = useCallback((key) => {
-    const lines = LINES[key];
-    if (!lines) return;
-    const i = said.current[key] ?? 0;
-    said.current[key] = i + 1;
-    setText(lines[i % lines.length]);
+  const runId = useRef(0);
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+  // Play one line: a plain string, or a bit made of steps.
+  const play = useCallback(async (line) => {
+    const id = ++runId.current;
+    const alive = () => runId.current === id;
+    clearTimeout(hideTimer.current);
     setVisible(true);
     lastSpoke.current = Date.now();
-    clearTimeout(hideTimer.current);
+    const steps = typeof line === "string" ? [{ text: line }] : line;
+    for (const step of steps) {
+      if (!alive()) return;
+      if (step.scramble) {
+        const end = performance.now() + step.scramble;
+        const final = step.value
+          ? fakeIp()
+          : String(rnd(10 ** (step.digits || 2))).padStart(step.digits || 2, "0");
+        while (performance.now() < end) {
+          if (!alive()) return;
+          const noise = step.value
+            ? fakeIp()
+            : String(rnd(10 ** (step.digits || 2))).padStart(step.digits || 2, "0");
+          setText(`${step.text}${noise}${step.suffix || ""}`);
+          await sleep(70);
+        }
+        // IPs never resolve to a real value: they end as dashes
+        setText(`${step.text}${step.value ? step.value : final}${step.suffix || ""}`);
+        await sleep(step.wait ?? 900);
+      } else {
+        setText(step.text);
+        if (step.wait) await sleep(step.wait);
+      }
+      lastSpoke.current = Date.now();
+    }
+    if (!alive()) return;
     hideTimer.current = setTimeout(() => setVisible(false), SHOW_MS);
   }, []);
+
+  const say = useCallback(
+    (key) => {
+      const lines = LINES[key];
+      if (!lines) return;
+      const i = said.current[key] ?? 0;
+      said.current[key] = i + 1;
+      play(lines[i % lines.length]);
+    },
+    [play]
+  );
 
   // which section is the visitor looking at, and for how long
   useEffect(() => {
@@ -105,6 +198,10 @@ const Pet = () => {
         return;
       }
       dwell += 1;
+      if (Date.now() - lastSpoke.current > IDLE_MS && key !== "hero") {
+        say("idle");
+        return;
+      }
       if (key && key !== "hero" && dwell >= DWELL_S && Date.now() - lastSpoke.current > COOLDOWN_MS) {
         dwell = -DWELL_S * 2; // don't repeat right away on the same section
         say(key);
