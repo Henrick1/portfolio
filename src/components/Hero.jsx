@@ -1,6 +1,3 @@
-import { motion } from 'framer-motion';
-
-import { styles } from '../styles';
 import { HeroCanvas } from './canvas';
 import TypingLine from './TypingLine';
 
@@ -11,66 +8,57 @@ const LINES = [
   'probably playing something rn',
 ];
 
+// Poster-style hero: the name runs huge across the screen, the 3D laptop (with
+// the toad sitting on it) stands in front of the letters, and the intro plus
+// the two actions sit clearly underneath.
 const Hero = () => {
   return (
-    <section className='relative z-10 w-full h-screen mx-auto'>
-      <div
-        className={`absolute inset-0 top-[120px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5 z-10 pointer-events-none`}
-      >
-        <div className='flex flex-col justify-center items-center mt-5'>
-          <div className='w-5 h-5 rounded-full bg-[#FF6B1A]' />
-          <div className='w-1 sm:h-80 h-40 violet-gradient' />
-        </div>
-
-        <div>
-          <h1 className={`${styles.heroHeadText} text-white`}>
-            hey, I'm <span className='bg-gradient-to-r from-[#FF6B1A] to-[#FFB347] bg-clip-text text-transparent'>henrick</span>
-          </h1>
-          <TypingLine
-            lines={LINES}
-            className='mt-3 font-mono font-medium text-white-100 lg:text-[26px] sm:text-[22px] text-[16px] min-h-[1.6em]'
-          />
-          <p className='mt-2 text-secondary sm:text-[17px] text-[14px]'>
-            B.Sc. in Computer Science · based in Brazil
-          </p>
-          <div className='sm:mt-8 mt-5 flex flex-wrap sm:gap-4 gap-3 pointer-events-auto'>
-            <a
-              href='#work'
-              className='bg-[#FF6B1A] hover:bg-[#E5560A] text-white font-semibold sm:py-3 sm:px-6 py-2.5 px-4 sm:text-[16px] text-[14px] rounded-xl shadow-lg shadow-[#FF6B1A]/30 transition-colors'
-            >
-              see what I built
-            </a>
-            <a
-              href='#contact'
-              className='border border-white/30 hover:border-white text-white font-semibold sm:py-3 sm:px-6 py-2.5 px-4 sm:text-[16px] text-[14px] rounded-xl backdrop-blur-sm transition-colors'
-            >
-              say hi
-            </a>
-          </div>
-        </div>
+    <section className='relative z-10 w-full min-h-[100svh] overflow-hidden flex flex-col'>
+      <div className='relative z-20 pt-24 sm:pt-28 px-6 sm:px-16 max-w-[1400px] w-full mx-auto flex justify-between font-mono text-[12px] sm:text-[14px] text-white-100/80'>
+        <span>full stack developer</span>
+        <span className='text-right'><span className='hidden sm:inline'>B.Sc. Computer Science &middot; </span>Brazil</span>
       </div>
-      <div className='absolute inset-x-0 top-[40%] bottom-[14%] xs:bottom-0 lg:bottom-0 lg:top-[12%] lg:left-[50%]'>
+
+      {/* the name, behind the 3D scene */}
+      <h1
+        aria-label="henrick"
+        className='hero-name relative z-0 select-none text-center font-display leading-[0.8] mt-4 sm:mt-6'
+      >
+        henrick
+      </h1>
+
+      {/* 3D laptop + toad in front of the letters */}
+      <div className='absolute inset-x-0 top-[22%] sm:top-[14%] bottom-[24%] sm:bottom-[10%] z-10'>
         <HeroCanvas />
       </div>
-      <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
-        <a href='#about' aria-label='Scroll to About section'>
-          <div className='w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2'>
-            <motion.div
-                animate={{
-                  y: [0, 24, 0],
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  repeatType: "loop",
-                }}
-                className='w-3 h-3 rounded-full bg-secondary mb-1'
-              />
-          </div>
-        </a>
+
+      <div className='relative z-20 mt-auto pb-10 sm:pb-12 px-6 sm:px-16 max-w-[1400px] w-full mx-auto flex flex-col sm:flex-row sm:items-end justify-between gap-6'>
+        <div>
+          <TypingLine
+            lines={LINES}
+            className='font-mono font-medium text-white lg:text-[24px] sm:text-[20px] text-[16px] min-h-[1.6em]'
+          />
+          <p className='mt-2 max-w-[44ch] text-white-100/80 sm:text-[17px] text-[14px] leading-relaxed'>
+            I build web apps end to end with React, Next.js, Node.js and Google Cloud.
+          </p>
+        </div>
+        <div className='flex flex-wrap gap-3'>
+          <a
+            href='#work'
+            className='bg-[#FF6B1A] hover:bg-[#FF8A3D] text-[#140a04] font-bold py-3 px-6 sm:text-[16px] text-[14px] rounded-md transition-colors'
+          >
+            see what I built
+          </a>
+          <a
+            href='#contact'
+            className='border-2 border-white/80 hover:bg-white hover:text-[#0b0e14] text-white font-bold py-3 px-6 sm:text-[16px] text-[14px] rounded-md transition-colors'
+          >
+            say hi
+          </a>
+        </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

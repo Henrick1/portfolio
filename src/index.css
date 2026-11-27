@@ -213,9 +213,9 @@ body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 55% at 70% 0%, rgba(92, 112, 150, 0.55), transparent 70%),
-    radial-gradient(ellipse 60% 45% at 20% 10%, rgba(58, 74, 104, 0.6), transparent 70%),
-    linear-gradient(180deg, #1A2232 0%, #111723 45%, #090C12 100%);
+    radial-gradient(ellipse 80% 55% at 72% 0%, rgba(96, 132, 196, 0.7), transparent 70%),
+    radial-gradient(ellipse 60% 45% at 18% 8%, rgba(52, 80, 132, 0.75), transparent 70%),
+    linear-gradient(180deg, #22355A 0%, #16213A 45%, #0A0E16 100%);
 }
 
 .storm-smoke {
@@ -233,9 +233,9 @@ body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 30% 26% at 10% 78%, rgba(255, 140, 40, 0.55), transparent 70%),
-    radial-gradient(ellipse 18% 16% at 12% 82%, rgba(255, 200, 110, 0.45), transparent 70%),
-    radial-gradient(ellipse 55% 30% at 15% 100%, rgba(255, 107, 26, 0.25), transparent 75%);
+    radial-gradient(ellipse 60% 30% at 50% 100%, rgba(255, 110, 30, 0.55), transparent 72%),
+    radial-gradient(ellipse 30% 18% at 50% 96%, rgba(255, 190, 110, 0.45), transparent 70%),
+    radial-gradient(ellipse 25% 30% at 0% 90%, rgba(255, 107, 26, 0.3), transparent 75%);
   mix-blend-mode: screen;
   animation: fire-flicker 3.2s ease-in-out infinite;
 }
@@ -305,3 +305,17 @@ body::after {
 
 
 
+
+/* Giant poster name in the hero */
+.hero-name {
+  font-size: clamp(120px, 24vw, 400px);
+  letter-spacing: 0.01em;
+  color: #EEE7DA;
+  background:
+    linear-gradient(180deg, #F4EEE3 0%, #E9DFD0 55%, #FFB37A 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.45));
+}

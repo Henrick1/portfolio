@@ -1,12 +1,10 @@
-import { useMemo, useRef } from "react";
-import * as THREE from "three";
+import { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
+import { useToadModel } from "./toadModel";
 
 // The virtual pet. The model has no rig or animation, so all motion is
 // procedural: breathing, a squash-and-hop when the page scrolls, and turning
 // towards the mouse.
-const MODEL = `${import.meta.env.BASE_URL}toad/toad.glb`;
 
 const reducedMotion =
   typeof window !== "undefined" &&
@@ -15,27 +13,9 @@ const reducedMotion =
 const HOP_MS = 520;
 
 const ToadModel = ({ hopAt, pointer, facing }) => {
-  const { scene } = useGLTF(MODEL);
   const body = useRef();
 
-  // Center, normalize size and give it a material (the textures are not in
-  // this copy of the model yet).
-  const model = useMemo(() => {
-    const root = scene.clone(true);
-    root.traverse((o) => {
-      if (!o.isMesh) return;
-      o.geometry = o.geometry.clone();
-      o.geometry.computeVertexNormals();
-      o.material = new THREE.MeshStandardMaterial({ color: "#6B7F45", roughness: 0.5, metalness: 0.05 });
-    });
-    const box = new THREE.Box3().setFromObject(root);
-    const size = box.getSize(new THREE.Vector3());
-    root.position.sub(box.getCenter(new THREE.Vector3()));
-    const group = new THREE.Group();
-    group.add(root);
-    group.scale.setScalar(2.1 / Math.max(size.x, size.y, size.z));
-    return group;
-  }, [scene]);
+  const model = useToadModel(1.7);
 
   useFrame(({ clock }) => {
     const g = body.current;
@@ -64,7 +44,7 @@ const ToadModel = ({ hopAt, pointer, facing }) => {
   });
 
   return (
-    <group ref={body}>
+    <group ref={body} position-y={-0.85}>
       <primitive object={model} />
     </group>
   );
@@ -85,6 +65,5 @@ const Toad = ({ hopAt, pointer, facing = 0, onClick }) => (
   </Canvas>
 );
 
-useGLTF.preload(MODEL);
 
 export default Toad;

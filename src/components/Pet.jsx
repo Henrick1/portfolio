@@ -8,7 +8,7 @@ const Toad = lazy(() => import("./canvas/Toad"));
 // when the mouse rests on it (cards dispatch a "pet:look" event).
 const LINES = {
   hero: [
-    "welcome to the show. scroll down, I'll tag along.",
+    "I jumped off the laptop to follow you. scroll on.",
     "that laptop never stops typing. I tried unplugging it.",
   ],
   about: [
@@ -20,7 +20,7 @@ const LINES = {
     "you can spin those balls. go on, nobody's watching.",
   ],
   work: [
-    "every project here has a story. ask me about the finance one.",
+    "every project here has a story. the finance one has the best plot twist.",
     "real projects, real code. click one, I'll wait.",
   ],
   contact: [
@@ -30,8 +30,8 @@ const LINES = {
   "project:Conta-Gotas": ["his own finance app. it counts every drop of money, hence the name."],
   "project:IoT Parking": ["sensors that find free parking spots. I just hop over the cars."],
   "project:Tabfolio": ["a browser extension for tab hoarders. he has 40 tabs open right now."],
-  "project:3D Developer Portfolio": ["you're inside this one. hi. look behind you."],
-  poke: ["ribbit.", "turn it up.", "careful, I bite. no I don't.", "this site runs on React and loud music."],
+  "project:3D Developer Portfolio": ["you're inside this one. I'm the side quest."],
+  poke: ["ribbit.", "careful, I bite. no I don't.", "achievement unlocked: poked the toad.", "this site runs on React and stubbornness."],
 };
 
 const SECTIONS = ["hero", "about", "skills", "work", "contact"];
@@ -50,6 +50,7 @@ const Pet = () => {
   const lastSpoke = useRef(0);
   const hideTimer = useRef(0);
   const box = useRef(null);
+  const [out, setOut] = useState(false); // false while the hero (where the toad sits on the laptop) is visible
 
   const say = useCallback((key) => {
     const lines = LINES[key];
@@ -104,13 +105,13 @@ const Pet = () => {
         return;
       }
       dwell += 1;
-      if (key && dwell >= DWELL_S && Date.now() - lastSpoke.current > COOLDOWN_MS) {
+      if (key && key !== "hero" && dwell >= DWELL_S && Date.now() - lastSpoke.current > COOLDOWN_MS) {
         dwell = -DWELL_S * 2; // don't repeat right away on the same section
         say(key);
       }
     }, 1000);
 
-    const first = setTimeout(() => say("hero"), 2500);
+    const first = setTimeout(() => {}, 0);
 
     return () => {
       io.disconnect();
@@ -119,6 +120,22 @@ const Pet = () => {
       window.removeEventListener("pet:look", onLook);
     };
   }, [say]);
+
+  // the toad lives on the laptop in the hero; it comes down here once you scroll past it
+  useEffect(() => {
+    const hero = document.querySelector("section");
+    if (!hero) return setOut(true);
+    const io = new IntersectionObserver(([e]) => setOut(e.intersectionRatio < 0.35), { threshold: [0, 0.35, 1] });
+    io.observe(hero);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (out && !said.current.hero) {
+      const t = setTimeout(() => say("hero"), 700);
+      return () => clearTimeout(t);
+    }
+  }, [out, say]);
 
   // hop when the page scrolls, look in the scroll direction
   useEffect(() => {
@@ -150,7 +167,12 @@ const Pet = () => {
   useEffect(() => () => clearTimeout(hideTimer.current), []);
 
   return (
-    <div ref={box} className="fixed bottom-2 right-2 sm:bottom-4 sm:right-4 z-40 w-[120px] h-[120px] sm:w-[160px] sm:h-[160px]">
+    <div
+      ref={box}
+      className={`fixed bottom-2 right-2 sm:bottom-4 sm:right-4 z-40 w-[120px] h-[120px] sm:w-[160px] sm:h-[160px] transition-all duration-500 ${
+        out ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"
+      }`}
+    >
       <div
         role="status"
         aria-live="polite"

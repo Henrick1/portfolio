@@ -7,6 +7,7 @@ import {
   RoundedBox,
 } from "@react-three/drei";
 import * as THREE from "three";
+import { useToadModel } from "./toadModel";
 
 // Hero 3D: a laptop whose screen types out a short TypeScript "about me".
 // Built in code: no model download.
@@ -169,6 +170,22 @@ const useKeyboardTexture = () =>
     return tex;
   }, []);
 
+// ---------- the toad, sitting on the laptop --------------------------------
+const SittingToad = (props) => {
+  const model = useToadModel(1.05);
+  const ref = useRef();
+  useFrame(({ clock, pointer }) => {
+    if (reducedMotion) return;
+    ref.current.rotation.y += (-0.5 + pointer.x * 0.5 - ref.current.rotation.y) * 0.06;
+    ref.current.scale.y = 1 + Math.sin(clock.elapsedTime * 2.2) * 0.02;
+  });
+  return (
+    <group ref={ref} {...props}>
+      <primitive object={model} />
+    </group>
+  );
+};
+
 // ---------- laptop ---------------------------------------------------------
 const Laptop = () => {
   const screen = useCodeTexture();
@@ -176,7 +193,7 @@ const Laptop = () => {
   const shell = { color: "#1C2330", metalness: 0.85, roughness: 0.28 };
 
   return (
-    <group rotation={[0.18, -0.28, 0]} position={[0, -0.75, 0]} scale={0.88}>
+    <group rotation={[0.2, -0.32, 0]} position={[0, -0.75, 0]} scale={0.88}>
       {/* base */}
       <RoundedBox args={[3.4, 0.12, 2.3]} radius={0.05} smoothness={4}>
         <meshStandardMaterial {...shell} />
@@ -189,6 +206,8 @@ const Laptop = () => {
         <planeGeometry args={[1.1, 0.6]} />
         <meshStandardMaterial color="#0F172A" metalness={0.6} roughness={0.4} />
       </mesh>
+
+      <SittingToad position={[1.05, 0.06, 0.55]} />
 
       {/* lid, hinged at the back edge */}
       <group position={[0, 0.06, -1.13]} rotation-x={-0.22}>
@@ -207,7 +226,7 @@ const Laptop = () => {
 };
 
 const Scene = ({ isMobile }) => (
-  <group scale={isMobile ? 1.15 : 1.25} position={[isMobile ? 0 : -0.1, isMobile ? 0.1 : 0.2, 0]}>
+  <group scale={isMobile ? 1.05 : 1.2} position={[0, isMobile ? 0 : -0.15, 0]}>
     <Float speed={reducedMotion ? 0 : 1.4} rotationIntensity={0.25} floatIntensity={0.6}>
       <Laptop />
     </Float>
