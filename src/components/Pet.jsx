@@ -114,13 +114,38 @@ const Pet = () => {
   const play = useCallback(async (line) => {
     const id = ++runId.current;
     const alive = () => runId.current === id;
+    const instant = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let shown = "";
+    // Type `target` letter by letter, keeping whatever it shares with the
+    // text already on screen (so "there." -> "there.." only adds a dot).
+    const type = async (target) => {
+      if (instant) {
+        shown = target;
+        setText(shown);
+        return;
+      }
+      const chars = Array.from(target);
+      const prev = Array.from(shown);
+      let i = 0;
+      while (i < prev.length && i < chars.length && prev[i] === chars[i]) i++;
+      for (; i <= chars.length; i++) {
+        if (!alive()) return;
+        shown = chars.slice(0, i).join("");
+        setText(shown);
+        const c = chars[i - 1];
+        await sleep(c === "." || c === "?" || c === "!" ? 220 : c === "," || c === ":" ? 120 : 28);
+      }
+    };
     clearTimeout(hideTimer.current);
     setVisible(true);
     lastSpoke.current = Date.now();
     const steps = typeof line === "string" ? [{ text: line }] : line;
+    setText("");
     for (const step of steps) {
       if (!alive()) return;
       if (step.scramble) {
+        await type(step.text);
+        if (!alive()) return;
         const end = performance.now() + step.scramble;
         const final = step.value
           ? fakeIp()
@@ -134,10 +159,11 @@ const Pet = () => {
           await sleep(70);
         }
         // IPs never resolve to a real value: they end as dashes
-        setText(`${step.text}${step.value ? step.value : final}${step.suffix || ""}`);
+        shown = `${step.text}${step.value ? step.value : final}${step.suffix || ""}`;
+        setText(shown);
         await sleep(step.wait ?? 900);
       } else {
-        setText(step.text);
+        await type(step.text);
         if (step.wait) await sleep(step.wait);
       }
       lastSpoke.current = Date.now();
