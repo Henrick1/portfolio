@@ -33,7 +33,7 @@ const Tech = () => {
             variants={fadeIn("up", "spring", i * 0.15, 0.75)}
             className='bg-tertiary/70 border border-white/5 rounded-2xl p-4 sm:p-6'
           >
-            <h3 className='font-mono text-white font-medium text-[16px]'><span className='text-[#3B82F6]'>./</span>{group.title}</h3>
+            <h3 className='font-mono text-white font-medium text-[16px]'><span className='text-[#FF6B1A]'>./</span>{group.title}</h3>
             <ul className='mt-4 grid grid-cols-3 xs:grid-cols-4 md:grid-cols-3 xl:grid-cols-4 gap-x-2 gap-y-3'>
               {group.items.map((tech) => (
                 <li key={tech.name} className='flex flex-col items-center text-center'>

@@ -18,9 +18,9 @@ const reducedMotion =
 // ---------- screen: syntax-highlighted code drawn on a canvas -------------
 const C = {
   kw: "#C084FC", // keywords
-  cls: "#22D3EE", // class names
+  cls: "#FFB347", // class names
   str: "#86EFAC", // strings
-  attr: "#93C5FD", // attributes
+  attr: "#FFC98A", // attributes
   txt: "#E2E8F0",
   dim: "#475569",
 };
@@ -44,11 +44,11 @@ const W = 1024;
 const H = 660;
 
 const drawScreen = (ctx, chars, cursorOn) => {
-  ctx.fillStyle = "#0B1224";
+  ctx.fillStyle = "#0F141C";
   ctx.fillRect(0, 0, W, H);
 
   // editor title bar
-  ctx.fillStyle = "#111A33";
+  ctx.fillStyle = "#161C26";
   ctx.fillRect(0, 0, W, 54);
   ["#F87171", "#FBBF24", "#34D399"].forEach((col, i) => {
     ctx.fillStyle = col;
@@ -56,9 +56,9 @@ const drawScreen = (ctx, chars, cursorOn) => {
     ctx.arc(30 + i * 28, 27, 9, 0, Math.PI * 2);
     ctx.fill();
   });
-  ctx.fillStyle = "#0B1224";
+  ctx.fillStyle = "#0F141C";
   ctx.fillRect(130, 10, 190, 44);
-  ctx.fillStyle = "#3B82F6";
+  ctx.fillStyle = "#FF6B1A";
   ctx.fillRect(130, 10, 190, 3);
   ctx.font = "500 22px ui-monospace, Menlo, Consolas, monospace";
   ctx.fillStyle = C.txt;
@@ -90,7 +90,7 @@ const drawScreen = (ctx, chars, cursorOn) => {
   });
 
   if (cursorOn && cursor) {
-    ctx.fillStyle = "#3B82F6";
+    ctx.fillStyle = "#FF6B1A";
     ctx.fillRect(cursor[0] + 2, cursor[1] - 26, 13, 32);
   }
 };
@@ -148,21 +148,21 @@ const useKeyboardTexture = () =>
     canvas.width = 1024;
     canvas.height = 400;
     const ctx = canvas.getContext("2d");
-    ctx.fillStyle = "#0A0F1E";
+    ctx.fillStyle = "#0C1017";
     ctx.fillRect(0, 0, 1024, 400);
     const rows = [14, 14, 13, 12];
     rows.forEach((n, r) => {
       const keyW = 1000 / 14.6;
       const offset = (1024 - n * keyW) / 2;
       for (let k = 0; k < n; k++) {
-        ctx.fillStyle = "#1E293B";
+        ctx.fillStyle = "#1C2330";
         ctx.fillRect(offset + k * keyW + 4, 14 + r * 78, keyW - 8, 66);
-        ctx.fillStyle = "rgba(59,130,246,0.55)";
+        ctx.fillStyle = "rgba(255,107,26,0.55)";
         ctx.fillRect(offset + k * keyW + 4, 14 + r * 78 + 62, keyW - 8, 4);
       }
     });
     // space bar row
-    ctx.fillStyle = "#1E293B";
+    ctx.fillStyle = "#1C2330";
     ctx.fillRect(300, 14 + 4 * 78, 424, 66);
     const tex = new THREE.CanvasTexture(canvas);
     tex.colorSpace = THREE.SRGBColorSpace;
@@ -173,7 +173,7 @@ const useKeyboardTexture = () =>
 const Laptop = () => {
   const screen = useCodeTexture();
   const keyboard = useKeyboardTexture();
-  const shell = { color: "#1E293B", metalness: 0.85, roughness: 0.28 };
+  const shell = { color: "#1C2330", metalness: 0.85, roughness: 0.28 };
 
   return (
     <group rotation={[0.18, -0.28, 0]} position={[0, -0.75, 0]} scale={0.88}>
@@ -200,7 +200,7 @@ const Laptop = () => {
           <meshBasicMaterial map={screen} toneMapped={false} />
         </mesh>
         {/* soft blue light spilling from the screen */}
-        <pointLight position={[0, 1.1, 1.2]} intensity={1.2} distance={4} color="#3B82F6" />
+        <pointLight position={[0, 1.1, 1.2]} intensity={1.2} distance={4} color="#FF6B1A" />
       </group>
     </group>
   );
@@ -222,11 +222,11 @@ const LaptopCanvas = () => {
     <Canvas dpr={[1, 1.5]} camera={{ position: [0, 1.4, 8], fov: 42 }}>
       <ambientLight intensity={0.35} />
       <directionalLight position={[3, 5, 4]} intensity={1} />
-      <pointLight position={[-5, 2, 3]} intensity={1} color="#22D3EE" />
+      <pointLight position={[-5, 2, 3]} intensity={1} color="#FFB347" />
       {/* Reflections from in-scene light panels: no HDR file to download */}
       <Environment resolution={128}>
-        <Lightformer form="rect" intensity={3} color="#3B82F6" position={[-4, 2, 4]} scale={[4, 3, 1]} target={[0, 0, 0]} />
-        <Lightformer form="rect" intensity={2.5} color="#22D3EE" position={[4, 3, 3]} scale={[3, 2, 1]} target={[0, 0, 0]} />
+        <Lightformer form="rect" intensity={3} color="#FF6B1A" position={[-4, 2, 4]} scale={[4, 3, 1]} target={[0, 0, 0]} />
+        <Lightformer form="rect" intensity={2.5} color="#FFB347" position={[4, 3, 3]} scale={[3, 2, 1]} target={[0, 0, 0]} />
         <Lightformer form="rect" intensity={1.5} color="#ffffff" position={[0, 6, -2]} scale={[6, 1, 1]} target={[0, 0, 0]} />
       </Environment>
       <Scene isMobile={isMobile} />

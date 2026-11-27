@@ -36,9 +36,9 @@ const TypingLine = ({ lines, className = "" }) => {
   return (
     <p className={className} aria-label={lines.join(". ")}>
       <span aria-hidden="true">
-        <span className="text-[#3B82F6]">&gt; </span>
+        <span className="text-[#FF6B1A]">&gt; </span>
         {text}
-        <span className="inline-block w-[0.55em] h-[1.1em] -mb-[0.2em] ml-1 bg-[#3B82F6] motion-safe:animate-pulse" />
+        <span className="inline-block w-[0.55em] h-[1.1em] -mb-[0.2em] ml-1 bg-[#FF6B1A] motion-safe:animate-pulse" />
       </span>
     </p>
   );

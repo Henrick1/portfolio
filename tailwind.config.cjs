@@ -5,20 +5,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#050816",
-        secondary: "#94A3B8",
-        tertiary: "#0F172A",
-        "black-100": "#0B1224",
-        "black-200": "#060B1A",
+        primary: "#090C12",
+        secondary: "#8E98AA",
+        tertiary: "#121822",
+        "black-100": "#0E131B",
+        "black-200": "#07090E",
         "white-100": "#f3f3f3",
       },
       boxShadow: {
-        card: "0px 35px 120px -15px #0F2A5A",
+        card: "0px 35px 120px -15px #1F1208",
       },
       screens: {
         xs: "450px",
       },
       fontFamily: {
+        display: ["Anton", "Impact", "sans-serif"],
         mono: ['"Fira Code"', "ui-monospace", "Menlo", "Consolas", "monospace"],
       },
     },

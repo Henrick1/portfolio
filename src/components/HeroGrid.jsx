@@ -1,55 +1,28 @@
 import { useEffect, useRef } from "react";
 
-// Hero background: a perspective grid floor with a blue glow on the horizon.
-// Drawn on a 2D canvas at the screen's real resolution: each line is projected
-// and stroked once, so it stays crisp (a huge CSS-3D-transformed gradient gets
-// rasterized at reduced scale and its thin lines alias into doubled pairs).
+// Hero background: a stormy night sky with smoke, a fire glow in the corner,
+// embers drifting up (2D canvas, additive blending) and the odd lightning
+// flash. Sky, smoke, glow and flash are CSS (see .storm-* in index.css).
 
-const LINE = "rgba(59, 130, 246, 0.65)";
-const DEPTH_STEP = 0.25; // distance between horizontal lines, in "z" units
-const FAR = 40; // stop drawing once lines are this far away
-const SPEED = 0.08; // z units per second moving towards the viewer
+const COUNT = 140;
 
-const draw = (ctx, w, h, dpr, t) => {
-  ctx.clearRect(0, 0, w, h);
-  ctx.lineWidth = 1.5 * dpr;
-  ctx.strokeStyle = LINE;
-  ctx.shadowColor = "rgba(59, 130, 246, 0.9)";
-  ctx.shadowBlur = 6 * dpr;
-
-  const cx = w / 2;
-  const gap = Math.max(h * 0.2, 48 * dpr); // spacing of vertical lines at the bottom edge
-
-  // Horizontal lines: y = h / z, sliding towards the viewer over time.
-  const phase = (t * SPEED) % DEPTH_STEP;
-  ctx.beginPath();
-  for (let z = 1 + DEPTH_STEP - phase; z < FAR; z += DEPTH_STEP) {
-    const y = Math.round(h / z) + 0.5;
-    ctx.moveTo(0, y);
-    ctx.lineTo(w, y);
-  }
-  // Vertical lines: straight rays from the vanishing point on the horizon.
-  const n = Math.ceil((cx / gap) * 8);
-  for (let i = -n; i <= n; i++) {
-    ctx.moveTo(cx, 0);
-    ctx.lineTo(cx + i * gap, h);
-  }
-  ctx.stroke();
-
-  // Fade towards the horizon and into the page below.
-  ctx.shadowBlur = 0;
-  ctx.globalCompositeOperation = "destination-in";
-  const fade = ctx.createLinearGradient(0, 0, 0, h);
-  fade.addColorStop(0, "rgba(0,0,0,0)");
-  fade.addColorStop(0.3, "rgba(0,0,0,1)");
-  fade.addColorStop(0.75, "rgba(0,0,0,1)");
-  fade.addColorStop(1, "rgba(0,0,0,0)");
-  ctx.fillStyle = fade;
-  ctx.fillRect(0, 0, w, h);
-  ctx.globalCompositeOperation = "source-over";
+const spawn = (w, h, dpr, initial) => {
+  // most embers start near the fire on the left
+  const fromFire = Math.random() < 0.7;
+  return {
+    x: fromFire ? Math.random() * w * 0.45 : Math.random() * w,
+    y: initial ? Math.random() * h : h + Math.random() * 40 * dpr,
+    r: (0.6 + Math.random() * 1.8) * dpr,
+    vy: (18 + Math.random() * 45) * dpr, // px per second, upwards
+    vx: (Math.random() * 14 - 4) * dpr,
+    phase: Math.random() * Math.PI * 2,
+    life: 0,
+    max: 5 + Math.random() * 7,
+    hue: 22 + Math.random() * 22,
+  };
 };
 
-const GridCanvas = () => {
+const Embers = () => {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -58,24 +31,59 @@ const GridCanvas = () => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0;
     let visible = true;
-    let size = { w: 0, h: 0, dpr: 1 };
-    const start = performance.now();
+    let w = 0;
+    let h = 0;
+    let dpr = 1;
+    let parts = [];
+    let last = performance.now();
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const { width, height } = canvas.getBoundingClientRect();
-      canvas.width = Math.round(width * dpr);
-      canvas.height = Math.round(height * dpr);
-      size = { w: canvas.width, h: canvas.height, dpr };
-      draw(ctx, size.w, size.h, dpr, 0);
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const r = canvas.getBoundingClientRect();
+      w = canvas.width = Math.round(r.width * dpr);
+      h = canvas.height = Math.round(r.height * dpr);
+      parts = Array.from({ length: COUNT }, () => spawn(w, h, dpr, true));
+      draw(0);
+    };
+
+    const draw = (dt) => {
+      ctx.clearRect(0, 0, w, h);
+      ctx.globalCompositeOperation = "lighter";
+      for (let i = 0; i < parts.length; i++) {
+        const p = parts[i];
+        p.life += dt;
+        p.y -= p.vy * dt;
+        p.x += (p.vx + Math.sin(p.life * 1.7 + p.phase) * 12 * dpr) * dt;
+        if (p.y < -10 || p.life > p.max) {
+          parts[i] = spawn(w, h, dpr, false);
+          continue;
+        }
+        const fade = Math.min(1, p.life / 0.6) * Math.max(0, 1 - p.life / p.max);
+        const flicker = 0.65 + 0.35 * Math.sin(p.life * 9 + p.phase);
+        const a = fade * flicker;
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
+        g.addColorStop(0, `hsla(${p.hue}, 100%, 70%, ${a})`);
+        g.addColorStop(0.35, `hsla(${p.hue}, 100%, 55%, ${a * 0.5})`);
+        g.addColorStop(1, `hsla(${p.hue}, 100%, 50%, 0)`);
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.globalCompositeOperation = "source-over";
     };
 
     const frame = (now) => {
-      draw(ctx, size.w, size.h, size.dpr, (now - start) / 1000);
+      const dt = Math.min(0.05, (now - last) / 1000);
+      last = now;
+      draw(dt);
       raf = requestAnimationFrame(frame);
     };
     const play = () => {
-      if (!reduced && visible && !document.hidden && !raf) raf = requestAnimationFrame(frame);
+      if (!reduced && visible && !document.hidden && !raf) {
+        last = performance.now();
+        raf = requestAnimationFrame(frame);
+      }
     };
     const pause = () => {
       cancelAnimationFrame(raf);
@@ -90,25 +98,29 @@ const GridCanvas = () => {
       visible ? play() : pause();
     });
     io.observe(canvas);
-    const onVisibility = () => (document.hidden ? pause() : play());
-    document.addEventListener("visibilitychange", onVisibility);
+    const onVis = () => (document.hidden ? pause() : play());
+    document.addEventListener("visibilitychange", onVis);
     play();
 
     return () => {
       pause();
       ro.disconnect();
       io.disconnect();
-      document.removeEventListener("visibilitychange", onVisibility);
+      document.removeEventListener("visibilitychange", onVis);
     };
   }, []);
 
-  return <canvas ref={ref} className='absolute left-0 right-0 bottom-0 top-[52%] w-full h-[48%]' />;
+  return <canvas ref={ref} className='absolute inset-0 w-full h-full' />;
 };
 
 const HeroGrid = () => (
   <div aria-hidden='true' className='absolute inset-0 pointer-events-none'>
-    <div className='hero-glow' />
-    <GridCanvas />
+    <div className='storm-sky' />
+    <div className='storm-smoke' />
+    <div className='storm-fire' />
+    <div className='storm-flash' />
+    <Embers />
+    <div className='storm-ground' />
   </div>
 );
 

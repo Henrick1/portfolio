@@ -68,7 +68,7 @@ const Contact = () => {
           href="https://github.com/Henrick1"
           target="_blank"
           rel="noreferrer"
-          className="mt-4 inline-flex items-center gap-2 text-white font-medium hover:text-[#22D3EE] transition-colors"
+          className="mt-4 inline-flex items-center gap-2 text-white font-medium hover:text-[#FFB347] transition-colors"
         >
           <img src={github} alt="" className="w-5 h-5 object-contain" />
           github.com/Henrick1
@@ -89,7 +89,7 @@ const Contact = () => {
               value={form.name}
               onChange={handleChange}
               placeholder="what should I call you?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-transparent focus:border-[#3B82F6] transition-colors font-medium"
+              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-transparent focus:border-[#FF6B1A] transition-colors font-medium"
             />
           </label>
           <label className="flex flex-col">
@@ -102,7 +102,7 @@ const Contact = () => {
               value={form.email}
               onChange={handleChange}
               placeholder="where can I reply?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-transparent focus:border-[#3B82F6] transition-colors font-medium"
+              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-transparent focus:border-[#FF6B1A] transition-colors font-medium"
             />
           </label>
           <label className="flex flex-col">
@@ -114,13 +114,13 @@ const Contact = () => {
               value={form.message}
               onChange={handleChange}
               placeholder="what's up?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-transparent focus:border-[#3B82F6] transition-colors font-medium"
+              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-transparent focus:border-[#FF6B1A] transition-colors font-medium"
             />
           </label>
           <button
             type="submit"
             disabled={loading}
-            className="bg-[#3B82F6] hover:bg-[#2563EB] disabled:opacity-60 transition-colors py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl"
+            className="bg-[#FF6B1A] hover:bg-[#E5560A] disabled:opacity-60 transition-colors py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl"
           >
             {loading ? 'sending...' : 'send it'}
           </button>

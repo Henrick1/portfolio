@@ -18,6 +18,8 @@ const ProjectRow = ({ index, name, description, tags, image, source_code_link })
 
   return (
     <motion.article
+      onMouseEnter={() => window.dispatchEvent(new CustomEvent("pet:look", { detail: `project:${name}` }))}
+      onMouseLeave={() => window.dispatchEvent(new CustomEvent("pet:look", { detail: null }))}
       variants={fadeIn("up", "spring", index * 0.2, 0.75)}
       className='green-pink-gradient p-[1px] rounded-3xl shadow-card'
     >
@@ -46,7 +48,7 @@ const ProjectRow = ({ index, name, description, tags, image, source_code_link })
             {tags.map((tag) => (
               <li
                 key={tag.name}
-                className='text-[13px] font-medium text-[#BFDBFE] bg-[#3B82F6]/10 border border-[#3B82F6]/30 rounded-full px-3 py-1'
+                className='text-[13px] font-medium text-[#FFD9B0] bg-[#FF6B1A]/10 border border-[#FF6B1A]/30 rounded-full px-3 py-1'
               >
                 {tag.name}
               </li>
@@ -58,7 +60,7 @@ const ProjectRow = ({ index, name, description, tags, image, source_code_link })
               href={source_code_link}
               target='_blank'
               rel='noreferrer'
-              className='mt-8 inline-flex items-center gap-2 bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold py-2.5 px-5 rounded-xl transition-colors'
+              className='mt-8 inline-flex items-center gap-2 bg-[#FF6B1A] hover:bg-[#E5560A] text-white font-semibold py-2.5 px-5 rounded-xl transition-colors'
             >
               <img src={github} alt='' className='w-5 h-5 object-contain' />
               view the code

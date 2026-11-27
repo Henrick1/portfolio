@@ -18,13 +18,13 @@ const Hero = () => {
         className={`absolute inset-0 top-[120px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5 z-10 pointer-events-none`}
       >
         <div className='flex flex-col justify-center items-center mt-5'>
-          <div className='w-5 h-5 rounded-full bg-[#3B82F6]' />
+          <div className='w-5 h-5 rounded-full bg-[#FF6B1A]' />
           <div className='w-1 sm:h-80 h-40 violet-gradient' />
         </div>
 
         <div>
           <h1 className={`${styles.heroHeadText} text-white`}>
-            hey, I'm <span className='bg-gradient-to-r from-[#3B82F6] to-[#22D3EE] bg-clip-text text-transparent'>henrick</span>
+            hey, I'm <span className='bg-gradient-to-r from-[#FF6B1A] to-[#FFB347] bg-clip-text text-transparent'>henrick</span>
           </h1>
           <TypingLine
             lines={LINES}
@@ -36,7 +36,7 @@ const Hero = () => {
           <div className='sm:mt-8 mt-5 flex flex-wrap sm:gap-4 gap-3 pointer-events-auto'>
             <a
               href='#work'
-              className='bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold sm:py-3 sm:px-6 py-2.5 px-4 sm:text-[16px] text-[14px] rounded-xl shadow-lg shadow-[#3B82F6]/30 transition-colors'
+              className='bg-[#FF6B1A] hover:bg-[#E5560A] text-white font-semibold sm:py-3 sm:px-6 py-2.5 px-4 sm:text-[16px] text-[14px] rounded-xl shadow-lg shadow-[#FF6B1A]/30 transition-colors'
             >
               see what I built
             </a>

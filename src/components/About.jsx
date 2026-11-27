@@ -30,10 +30,10 @@ const ServiceCard = ({ index, title, description, track }) => (
 const ProfileCard = () => (
   <motion.aside
     variants={fadeIn("left", "spring", 0.2, 0.75)}
-    className='bg-[#0B1224] border border-[#3B82F6]/30 rounded-2xl overflow-hidden shadow-card'
+    className='bg-[#0F141C] border border-[#FF6B1A]/30 rounded-2xl overflow-hidden shadow-card'
     aria-label='Profile summary'
   >
-    <div className='flex items-center gap-2 px-4 py-3 bg-[#111A33] border-b border-white/5'>
+    <div className='flex items-center gap-2 px-4 py-3 bg-[#161C26] border-b border-white/5'>
       <span className='w-3 h-3 rounded-full bg-[#F87171]' />
       <span className='w-3 h-3 rounded-full bg-[#FBBF24]' />
       <span className='w-3 h-3 rounded-full bg-[#34D399]' />
@@ -45,7 +45,7 @@ const ProfileCard = () => (
       {profile.map(({ key, value }, i) => (
         <span key={key}>
           {"  "}
-          <span className='text-[#93C5FD]'>"{key}"</span>
+          <span className='text-[#FFC98A]'>"{key}"</span>
           <span className='text-white'>: </span>
           <span className='text-[#86EFAC]'>{value}</span>
           <span className='text-white'>{i < profile.length - 1 ? "," : ""}</span>

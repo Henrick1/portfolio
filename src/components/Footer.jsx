@@ -12,7 +12,7 @@ const Footer = () => (
     >
       <defs>
         <linearGradient id="footer-wave" x1="0" x2="1" y1="0" y2="0">
-          <stop offset="0%" stopColor="#1E90FF" />
+          <stop offset="0%" stopColor="#FF6B1A" />
           <stop offset="100%" stopColor="#0d1117" />
         </linearGradient>
       </defs>
@@ -22,7 +22,7 @@ const Footer = () => (
       />
     </svg>
 
-    <div className="bg-gradient-to-r from-[#1E90FF] to-[#0d1117]">
+    <div className="bg-gradient-to-r from-[#FF6B1A] to-[#0d1117]">
       <div
         className={`${styles.paddingX} max-w-7xl mx-auto pb-8 pt-2 flex flex-col sm:flex-row items-center justify-between gap-4`}
       >
