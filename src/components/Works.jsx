@@ -21,16 +21,16 @@ const ProjectRow = ({ index, name, description, tags, image, source_code_link })
       onMouseEnter={() => window.dispatchEvent(new CustomEvent("pet:look", { detail: `project:${name}` }))}
       onMouseLeave={() => window.dispatchEvent(new CustomEvent("pet:look", { detail: null }))}
       variants={fadeIn("up", "spring", index * 0.2, 0.75)}
-      className='green-pink-gradient p-[1px] rounded-3xl shadow-card'
+      className='panel'
     >
       <div
-        className={`bg-tertiary rounded-3xl p-5 sm:p-8 flex flex-col gap-8 items-center ${
+        className={`p-5 sm:p-8 flex flex-col gap-8 items-center ${
           reversed ? "lg:flex-row-reverse" : "lg:flex-row"
         }`}
       >
         <Frame
           {...frameProps}
-          className='group relative w-full lg:w-[55%] shrink-0 overflow-hidden rounded-2xl border border-white/5'
+          className='group relative w-full lg:w-[55%] shrink-0 overflow-hidden rounded-[4px] border border-white/10'
         >
           <img
             src={image}
@@ -41,14 +41,14 @@ const ProjectRow = ({ index, name, description, tags, image, source_code_link })
         </Frame>
 
         <div className='flex-1 w-full'>
-          <h3 className='text-white font-bold text-[24px] sm:text-[28px] leading-tight'>{name}</h3>
+          <h3 className='font-display text-white text-[40px] sm:text-[52px] leading-[0.95]'>{name}</h3>
           <p className='mt-4 text-secondary text-[16px] leading-[27px]'>{description}</p>
 
           <ul className='mt-6 flex flex-wrap gap-2'>
             {tags.map((tag) => (
               <li
                 key={tag.name}
-                className='text-[13px] font-medium text-[#FFD9B0] bg-[#FF6B1A]/10 border border-[#FF6B1A]/30 rounded-full px-3 py-1'
+                className='font-mono text-[12px] text-[#F1E4D6] border border-white/15 rounded-[3px] px-2.5 py-1'
               >
                 {tag.name}
               </li>
@@ -60,7 +60,7 @@ const ProjectRow = ({ index, name, description, tags, image, source_code_link })
               href={source_code_link}
               target='_blank'
               rel='noreferrer'
-              className='mt-8 inline-flex items-center gap-2 bg-[#FF6B1A] hover:bg-[#E5560A] text-white font-semibold py-2.5 px-5 rounded-xl transition-colors'
+              className='mt-8 inline-flex items-center gap-2 bg-[#FF6B1A] hover:bg-[#FF8A3D] text-[#140a04] font-bold py-2.5 px-5 rounded-md transition-colors'
             >
               <img src={github} alt='' className='w-5 h-5 object-contain' />
               view the code

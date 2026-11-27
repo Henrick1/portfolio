@@ -353,6 +353,11 @@ body::after {
 .np-eq i:nth-child(3) { animation-delay: -0.7s; }
 .np-eq i:nth-child(4) { animation-delay: -0.2s; }
 
+.np-cover {
+  object-fit: cover;
+  background: none;
+}
+
 @keyframes np-spin {
   to { transform: rotate(360deg); }
 }
@@ -364,4 +369,72 @@ body::after {
 
 @media (prefers-reduced-motion: reduce) {
   .np-disc, .np-eq i { animation: none; }
+}
+
+/* ---------- poster system for the sections below the hero ---------- */
+.poster-title {
+  font-family: "Anton", Impact, sans-serif;
+  font-weight: 400;
+  font-size: clamp(64px, 11vw, 168px);
+  line-height: 0.86;
+  letter-spacing: 0.005em;
+  background: linear-gradient(180deg, #F4EEE3 0%, #E9DFD0 60%, #FFB37A 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-bottom: 0.04em;
+}
+
+.panel {
+  background: rgba(14, 19, 27, 0.82);
+  border: 1px solid rgba(238, 231, 218, 0.1);
+  border-radius: 6px;
+  transition: border-color 0.25s;
+}
+
+.panel:hover {
+  border-color: rgba(255, 107, 26, 0.6);
+}
+
+/* storm haze behind every section */
+.storm-page {
+  background:
+    radial-gradient(ellipse 70% 30% at 85% 8%, rgba(52, 80, 132, 0.35), transparent 70%),
+    radial-gradient(ellipse 60% 25% at 10% 38%, rgba(52, 80, 132, 0.22), transparent 70%),
+    radial-gradient(ellipse 70% 25% at 90% 62%, rgba(255, 107, 26, 0.08), transparent 70%),
+    radial-gradient(ellipse 80% 30% at 20% 92%, rgba(52, 80, 132, 0.25), transparent 70%),
+    #090C12;
+}
+
+/* tilted tape strip with the stack scrolling, like tape on a poster */
+.tape {
+  position: relative;
+  z-index: 20;
+  margin: -28px -2% 0;
+  transform: rotate(-2deg);
+  background: #FF6B1A;
+  color: #140A04;
+  overflow: hidden;
+  white-space: nowrap;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+}
+
+.tape-track {
+  display: inline-flex;
+  animation: tape-scroll 40s linear infinite;
+}
+
+.tape-track span {
+  font-family: "Anton", Impact, sans-serif;
+  font-size: clamp(22px, 3vw, 34px);
+  line-height: 1;
+  padding: 14px 0;
+}
+
+@keyframes tape-scroll {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tape-track { animation: none; }
 }

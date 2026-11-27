@@ -9,7 +9,7 @@ const styles = {
       "text-[#F1E4D6] font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px]",
   
     sectionHeadText:
-      "font-display font-normal text-white md:text-[76px] sm:text-[60px] xs:text-[48px] text-[40px] leading-[1] tracking-[0.01em]",
+      "poster-title",
     prompt:
       "font-mono text-[#FF6B1A] sm:text-[17px] text-[14px]",
     sectionSubText:

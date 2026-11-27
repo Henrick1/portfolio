@@ -57,7 +57,7 @@ const Contact = () => {
     <div className="xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
       <motion.div
         variants={slideIn('left',"tween",0.2,1)}
-        className="flex-[0.75] bg-black-100 p-8 rounded-2xl"
+        className="flex-[0.75] panel p-8"
       >
         <p className={styles.prompt}>&gt; ping henrick</p>
         <h3 className={styles.sectionHeadText}>say hi.</h3>
@@ -89,7 +89,7 @@ const Contact = () => {
               value={form.name}
               onChange={handleChange}
               placeholder="what should I call you?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-transparent focus:border-[#FF6B1A] transition-colors font-medium"
+              className="bg-transparent py-3 px-0 placeholder:text-secondary/70 text-white outline-none border-0 border-b-2 border-white/20 focus:border-[#FF6B1A] transition-colors font-medium"
             />
           </label>
           <label className="flex flex-col">
@@ -102,7 +102,7 @@ const Contact = () => {
               value={form.email}
               onChange={handleChange}
               placeholder="where can I reply?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-transparent focus:border-[#FF6B1A] transition-colors font-medium"
+              className="bg-transparent py-3 px-0 placeholder:text-secondary/70 text-white outline-none border-0 border-b-2 border-white/20 focus:border-[#FF6B1A] transition-colors font-medium"
             />
           </label>
           <label className="flex flex-col">
@@ -114,13 +114,13 @@ const Contact = () => {
               value={form.message}
               onChange={handleChange}
               placeholder="what's up?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-transparent focus:border-[#FF6B1A] transition-colors font-medium"
+              className="bg-transparent py-3 px-0 placeholder:text-secondary/70 text-white outline-none border-0 border-b-2 border-white/20 focus:border-[#FF6B1A] transition-colors font-medium"
             />
           </label>
           <button
             type="submit"
             disabled={loading}
-            className="bg-[#FF6B1A] hover:bg-[#E5560A] disabled:opacity-60 transition-colors py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl"
+            className="bg-[#FF6B1A] hover:bg-[#FF8A3D] disabled:opacity-60 transition-colors py-3 px-8 outline-none w-fit text-[#140a04] font-bold rounded-md"
           >
             {loading ? 'sending...' : 'send it'}
           </button>

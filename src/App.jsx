@@ -1,4 +1,4 @@
-import { HeroGrid, Footer, Pet, About, Contact, Hero, Navbar, Tech, Works, StarsCanvas } from "./components";
+import { HeroGrid, Footer, Pet, Tape, About, Contact, Hero, Navbar, Tech, Works, StarsCanvas } from "./components";
 
 const App = () => {
   return (
@@ -8,12 +8,15 @@ const App = () => {
         <Navbar />
         <Hero />
       </div>
-      <About />
-      <Tech />
-      <Works />
-      <div className='relative z-0'>
-        <Contact />
-        <StarsCanvas />
+      <Tape />
+      <div className='storm-page'>
+        <About />
+        <Tech />
+        <Works />
+        <div className='relative z-0'>
+          <Contact />
+          <StarsCanvas />
+        </div>
       </div>
       <Footer />
       <Pet />

@@ -13,9 +13,9 @@ const ServiceCard = ({ index, title, description, track }) => (
   <Tilt className='w-full h-full' options={{ max: 25, scale: 1, speed: 450 }}>
     <motion.div
       variants={fadeIn("right", "spring", index * 0.3, 0.75)}
-      className='w-full h-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
+      className='w-full h-full panel'
     >
-      <div className='bg-tertiary rounded-[20px] h-full py-8 px-6 min-h-[240px] flex justify-evenly items-center flex-col gap-4'>
+      <div className='h-full py-8 px-6 min-h-[240px] flex justify-evenly items-center flex-col gap-4'>
         <div ref={track} className='w-20 h-20' aria-hidden='true' />
         <div className='text-center'>
           <h3 className='text-white text-[19px] font-bold'>{title}</h3>
@@ -30,7 +30,7 @@ const ServiceCard = ({ index, title, description, track }) => (
 const ProfileCard = () => (
   <motion.aside
     variants={fadeIn("left", "spring", 0.2, 0.75)}
-    className='bg-[#0F141C] border border-[#FF6B1A]/30 rounded-2xl overflow-hidden shadow-card'
+    className='panel overflow-hidden'
     aria-label='Profile summary'
   >
     <div className='flex items-center gap-2 px-4 py-3 bg-[#161C26] border-b border-white/5'>

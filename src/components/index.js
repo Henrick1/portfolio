@@ -8,6 +8,7 @@ import Works from './Works';
 import Contact from './Contact';
 import Footer from './Footer';
 import Pet from './Pet';
+import Tape from './Tape';
 
 export {
   Hero,
@@ -19,6 +20,7 @@ export {
   Contact,
   Footer,
   Pet,
+  Tape,
   EarthCanvas,
   HeroCanvas,
   StarsCanvas,
